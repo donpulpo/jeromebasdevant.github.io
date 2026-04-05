@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tresllum — Jerome Mercader</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink: #1a1814;
+      --ink-mid: #4a4842;
+      --ink-light: #8a8880;
+      --paper: #f7f4ef;
+      --paper-warm: #efe9de;
+      --accent: #c24a1a;
+      --accent-light: #e8d5c8;
+      --rule: rgba(26,24,20,0.12);
+      --font-serif: 'Libre Baskerville', Georgia, serif;
+      --font-sans: 'DM Sans', system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--font-serif);
+      font-size: 18px;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Layout ── */
+    .container {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* ── Header ── */
+    header {
+      padding: 4rem 0 3rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .wordmark {
+      font-family: var(--font-sans);
+      font-weight: 300;
+      font-size: 13px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+      margin-bottom: 2.5rem;
+    }
+
+    h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 1.5rem;
+    }
+
+    h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .lede {
+      font-family: var(--font-sans);
+      font-size: 1.05rem;
+      font-weight: 400;
+      color: var(--ink-mid);
+      line-height: 1.6;
+      max-width: 520px;
+    }
+
+    /* ── Sections ── */
+    section {
+      padding: 3.5rem 0;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    section:last-of-type {
+      border-bottom: none;
+    }
+
+    .section-label {
+      font-family: var(--font-sans);
+      font-weight: 500;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+      margin-bottom: 1.75rem;
+    }
+
+    p {
+      margin-bottom: 1.25rem;
+      color: var(--ink-mid);
+    }
+
+    p:last-child { margin-bottom: 0; }
+
+    p strong {
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    /* ── Pull quote ── */
+    .pull {
+      border-left: 3px solid var(--accent);
+      margin: 2rem 0;
+      padding: 0.25rem 0 0.25rem 1.5rem;
+    }
+
+    .pull p {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 1.2rem;
+      line-height: 1.5;
+      color: var(--ink);
+      margin: 0;
+    }
+
+    /* ── How I work ── */
+    .steps {
+      list-style: none;
+      margin-top: 0.5rem;
+    }
+
+    .steps li {
+      display: flex;
+      gap: 1.25rem;
+      align-items: baseline;
+      padding: 1.25rem 0;
+      border-top: 1px solid var(--rule);
+    }
+
+    .step-num {
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      min-width: 1.5rem;
+      padding-top: 2px;
+    }
+
+    .step-body strong {
+      display: block;
+      font-family: var(--font-sans);
+      font-weight: 500;
+      font-size: 0.95rem;
+      color: var(--ink);
+      margin-bottom: 0.3rem;
+    }
+
+    .step-body span {
+      font-family: var(--font-sans);
+      font-size: 0.9rem;
+      color: var(--ink-mid);
+      line-height: 1.5;
+    }
+
+    /* ── Contact ── */
+    .contact-block {
+      background: var(--paper-warm);
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      padding: 2rem 2rem;
+      margin-top: 1.5rem;
+    }
+
+    .contact-block p {
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+      color: var(--ink-mid);
+      margin-bottom: 1.25rem;
+    }
+
+    .contact-link {
+      font-family: var(--font-sans);
+      font-weight: 500;
+      font-size: 1rem;
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1.5px solid var(--accent-light);
+      transition: border-color 0.15s;
+    }
+
+    .contact-link:hover {
+      border-color: var(--accent);
+    }
+
+    /* ── Footer ── */
+    footer {
+      padding: 2.5rem 0;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-name {
+      font-family: var(--font-sans);
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .footer-links a {
+      font-family: var(--font-sans);
+      font-size: 12px;
+      color: var(--ink-light);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      transition: color 0.15s;
+    }
+
+    .footer-links a:hover { color: var(--ink); }
+
+    @media (max-width: 480px) {
+      body { font-size: 16px; }
+      .container { padding: 0 1.25rem; }
+      header { padding: 2.5rem 0 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <header>
+      <p class="wordmark">Jérôme Basdevant</p>
+      <h1>Becoming AI-native is a hard choice,<br><em>not a tool purchase.</em></h1>
+      <p class="lede">
+        I help software and product companies rethink what they build — not just how they work — in a world where agents can do what your users used to do manually.
+      </p>
+    </header>
+
+    <section>
+      <p class="section-label">The real questions</p>
+
+      <p>Your team uses Cursor. Your engineers prompt Claude. You've seen the demos.</p>
+
+      <div class="pull">
+        <p>Which parts of your product do AI agents make obsolete? Which become more valuable? What should you build next — and what should you stop building entirely?</p>
+      </div>
+
+      <p>Those are the hard questions. Not adopting AI tools, but rethinking your product, your roadmap, and your value proposition in a world that's moving faster than your planning cycle.</p>
+
+      <p>Most companies skip this. They layer AI onto existing products and call it transformation. That works until it doesn't — and usually it shows up first in your retention numbers.</p>
+    </section>
+
+    <section>
+      <p class="section-label">How I work</p>
+
+      <p>I work with leadership teams at software and product companies to make the shift from <strong>AI-curious to AI-native</strong>. Not with a strategy deck. With a structured process and hands-on work.</p>
+
+      <ul class="steps">
+        <li>
+          <span class="step-num">01</span>
+          <div class="step-body">
+            <strong>Diagnostic</strong>
+            <span>An honest look at where you actually stand — which parts of your product are at risk, which have leverage, and where your team's assumptions are wrong.</span>
+          </div>
+        </li>
+        <li>
+          <span class="step-num">02</span>
+          <div class="step-body">
+            <strong>Strategy built on hard choices</strong>
+            <span>A clear point of view on what to build next. Not a list of opportunities — a prioritised bet, with the reasoning behind it.</span>
+          </div>
+        </li>
+        <li>
+          <span class="step-num">03</span>
+          <div class="step-body">
+            <strong>Hands-on execution</strong>
+            <span>I work directly with your product and engineering teams. The change has to become real, not just credible on a slide.</span>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <p class="section-label">Background</p>
+      <p>
+        I'm Jerome Mercader. I spent twelve years building and scaling an AI-powered product in the ESG and regulatory intelligence space — first as CTO, then leading its innovation practice. I've seen what it takes to actually ship products that use AI as a core capability, not a feature.
+      </p>
+      <p>
+        I now advise software and product companies as an independent practice focused on the intersection of AI, product strategy, and the hard organisational work that makes transformation real.
+      </p>
+
+      <div class="contact-block">
+        <p>If this resonates, the best first step is a direct conversation.</p>
+        <a class="contact-link" href="mailto:jeromebasdevant@gmail.com">jeromebasdevant@gmail.com</a>
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer-inner">
+        <span class="footer-name">Jérôme Basdevamt</span>
+        <nav class="footer-links">
+          <a href="https://www.linkedin.com/in/jeromebasdevant/" target="_blank" rel="noopener">LinkedIn</a>
+        </nav>
+      </div>
+    </footer>
+
+  </div>
+
+</body>
+</html>
