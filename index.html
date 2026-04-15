@@ -3,205 +3,471 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tresllum — Jerome Mercader</title>
+  <title>Jérôme Basdevant — AI Leadership Advisory</title>
+  <meta name="description" content="I help leadership teams figure out what AI actually changes about their business — and then make the shift real." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>JB</text></svg>" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --ink: #1a1814;
-      --ink-mid: #4a4842;
-      --ink-light: #8a8880;
-      --paper: #f7f4ef;
-      --paper-warm: #efe9de;
-      --accent: #c24a1a;
-      --accent-light: #e8d5c8;
-      --rule: rgba(26,24,20,0.12);
-      --font-serif: 'Libre Baskerville', Georgia, serif;
-      --font-sans: 'DM Sans', system-ui, sans-serif;
+      --sand: #E8DED1;
+      --sand-light: #F0E9DF;
+      --sand-dark: #D9CCBB;
+      --charcoal: #2C2C2C;
+      --slate: #4A4A4A;
+      --slate-light: #6E6E6E;
+      --accent: #6B7B8D;
+      --accent-light: #8A97A5;
+      --rule: rgba(44,44,44,0.10);
+      --font-serif: 'DM Serif Display', Georgia, serif;
+      --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
     }
 
     html { scroll-behavior: smooth; }
 
     body {
-      background: var(--paper);
-      color: var(--ink);
-      font-family: var(--font-serif);
-      font-size: 18px;
-      line-height: 1.75;
+      background: var(--sand);
+      color: var(--charcoal);
+      font-family: var(--font-sans);
+      font-size: 16px;
+      line-height: 1.7;
       -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
     /* ── Layout ── */
     .container {
-      max-width: 680px;
+      max-width: 720px;
       margin: 0 auto;
-      padding: 0 2rem;
+      padding: 0 1.5rem;
     }
 
-    /* ── Header ── */
-    header {
-      padding: 4rem 0 3rem;
-      border-bottom: 1px solid var(--rule);
+    .container--wide {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
     }
 
-    .wordmark {
-      font-family: var(--font-sans);
-      font-weight: 300;
-      font-size: 13px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--ink-light);
-      margin-bottom: 2.5rem;
+    /* ── Typography ── */
+    h1, h2, h3 {
+      font-family: var(--font-serif);
+      font-weight: 400;
+      color: var(--charcoal);
     }
 
     h1 {
-      font-family: var(--font-serif);
-      font-size: clamp(2rem, 5vw, 3rem);
-      font-weight: 700;
+      font-size: clamp(2rem, 5vw, 2.75rem);
       line-height: 1.2;
-      letter-spacing: -0.02em;
-      color: var(--ink);
-      margin-bottom: 1.5rem;
+      letter-spacing: -0.01em;
     }
 
-    h1 em {
-      font-style: italic;
-      color: var(--accent);
+    h2 {
+      font-size: clamp(1.5rem, 3.5vw, 2rem);
+      line-height: 1.25;
+      margin-bottom: 1rem;
     }
 
-    .lede {
-      font-family: var(--font-sans);
-      font-size: 1.05rem;
-      font-weight: 400;
-      color: var(--ink-mid);
-      line-height: 1.6;
-      max-width: 520px;
-    }
-
-    /* ── Sections ── */
-    section {
-      padding: 3.5rem 0;
-      border-bottom: 1px solid var(--rule);
-    }
-
-    section:last-of-type {
-      border-bottom: none;
-    }
-
-    .section-label {
-      font-family: var(--font-sans);
-      font-weight: 500;
-      font-size: 11px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--ink-light);
-      margin-bottom: 1.75rem;
+    h3 {
+      font-size: 1.25rem;
+      line-height: 1.35;
+      margin-bottom: 0.75rem;
     }
 
     p {
+      color: var(--slate);
       margin-bottom: 1.25rem;
-      color: var(--ink-mid);
     }
 
     p:last-child { margin-bottom: 0; }
 
-    p strong {
-      font-weight: 700;
-      color: var(--ink);
+    strong {
+      font-weight: 600;
+      color: var(--charcoal);
     }
 
-    /* ── Pull quote ── */
-    .pull {
-      border-left: 3px solid var(--accent);
-      margin: 2rem 0;
-      padding: 0.25rem 0 0.25rem 1.5rem;
+    /* ── Section rhythm ── */
+    section {
+      padding: 3.5rem 0;
     }
 
-    .pull p {
-      font-family: var(--font-serif);
-      font-style: italic;
-      font-size: 1.2rem;
-      line-height: 1.5;
-      color: var(--ink);
+    .section-rule {
+      border: none;
+      border-top: 1px solid var(--rule);
       margin: 0;
     }
 
-    /* ── How I work ── */
-    .steps {
-      list-style: none;
-      margin-top: 0.5rem;
-    }
-
-    .steps li {
-      display: flex;
-      gap: 1.25rem;
-      align-items: baseline;
-      padding: 1.25rem 0;
-      border-top: 1px solid var(--rule);
-    }
-
-    .step-num {
+    .section-label {
       font-family: var(--font-sans);
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.1em;
+      font-weight: 600;
+      font-size: 0.875rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
       color: var(--accent);
-      min-width: 1.5rem;
-      padding-top: 2px;
+      margin-bottom: 2rem;
     }
 
-    .step-body strong {
-      display: block;
-      font-family: var(--font-sans);
-      font-weight: 500;
-      font-size: 0.95rem;
-      color: var(--ink);
-      margin-bottom: 0.3rem;
+    /* ── Hero ── */
+    .hero {
+      padding: 3.5rem 0 4rem;
     }
 
-    .step-body span {
+    .hero-intro {
+      display: flex;
+      gap: 2.5rem;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+
+    .hero-photo {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center 20%;
+      flex-shrink: 0;
+      image-rendering: auto;
+    }
+
+    .hero-intro-text {
+      flex: 1;
+    }
+
+    .hero-eyebrow {
       font-family: var(--font-sans);
-      font-size: 0.9rem;
-      color: var(--ink-mid);
+      font-weight: 600;
+      font-size: 0.9375rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-name {
+      font-family: var(--font-serif);
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      color: var(--charcoal);
+      margin-bottom: 0.35rem;
+    }
+
+    .hero-title {
+      font-size: 0.9375rem;
+      color: var(--slate-light);
       line-height: 1.5;
     }
 
-    /* ── Contact ── */
-    .contact-block {
-      background: var(--paper-warm);
-      border: 1px solid var(--rule);
-      border-radius: 4px;
-      padding: 2rem 2rem;
-      margin-top: 1.5rem;
-    }
-
-    .contact-block p {
-      font-family: var(--font-sans);
-      font-size: 0.95rem;
-      color: var(--ink-mid);
+    .hero h1 {
       margin-bottom: 1.25rem;
     }
 
-    .contact-link {
-      font-family: var(--font-sans);
-      font-weight: 500;
-      font-size: 1rem;
-      color: var(--accent);
-      text-decoration: none;
-      border-bottom: 1.5px solid var(--accent-light);
-      transition: border-color 0.15s;
+    .hero-sub {
+      font-size: 1.0625rem;
+      color: var(--slate);
+      line-height: 1.65;
+      margin-bottom: 1rem;
     }
 
-    .contact-link:hover {
-      border-color: var(--accent);
+    .hero-context {
+      font-size: 0.9375rem;
+      color: var(--slate-light);
+      line-height: 1.6;
+    }
+
+    /* ── Proof points ── */
+    .proof-points {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 2rem;
+      margin-top: 2.5rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--rule);
+    }
+
+    .proof-item {
+      display: flex;
+      align-items: baseline;
+      gap: 0.5rem;
+    }
+
+    .proof-num {
+      font-family: var(--font-serif);
+      font-size: 1.125rem;
+      color: var(--charcoal);
+    }
+
+    .proof-label {
+      font-size: 0.8125rem;
+      color: var(--slate-light);
+    }
+
+    /* ── Problem section ── */
+    .callout {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 1.125rem;
+      line-height: 1.55;
+      color: var(--charcoal);
+      border-left: 2px solid var(--accent);
+      padding-left: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .impact-area {
+      margin-bottom: 1.25rem;
+    }
+
+    .impact-area:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ── What changes ── */
+    .outcome {
+      padding: 1.5rem 0;
+      border-top: 1px solid var(--rule);
+    }
+
+    .outcome:last-child {
+      padding-bottom: 0;
+    }
+
+    .outcome h3 {
+      font-family: var(--font-sans);
+      font-weight: 600;
+      font-size: 0.9375rem;
+      color: var(--charcoal);
+      margin-bottom: 0.5rem;
+    }
+
+    .outcome p {
+      font-size: 0.9375rem;
+      margin-bottom: 0;
+    }
+
+    /* ── Engagement tiers ── */
+    .tiers {
+      display: grid;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .tier {
+      background: var(--sand-light);
+      border: 1px solid var(--rule);
+      border-radius: 6px;
+      padding: 2rem 2rem 2.25rem;
+    }
+
+    .tier-eyebrow {
+      font-family: var(--font-sans);
+      font-weight: 600;
+      font-size: 0.6875rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+
+    .tier h3 {
+      font-family: var(--font-serif);
+      font-size: 1.375rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .tier-duration {
+      font-size: 0.8125rem;
+      color: var(--slate-light);
+      font-style: italic;
+      margin-bottom: 1.25rem;
+    }
+
+    .tier p {
+      font-size: 0.9375rem;
+      margin-bottom: 1rem;
+    }
+
+    .tier ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .tier ul li {
+      font-size: 0.9375rem;
+      color: var(--slate);
+      padding: 0.3rem 0;
+      padding-left: 1.25rem;
+      position: relative;
+    }
+
+    .tier ul li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.7rem;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    .tier-result {
+      margin-top: 1.25rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--rule);
+    }
+
+    .tier-result-label {
+      font-weight: 600;
+      font-size: 0.8125rem;
+      color: var(--charcoal);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.35rem;
+    }
+
+    .tier-result p {
+      margin-bottom: 0;
+    }
+
+    .tier-note {
+      font-size: 0.875rem;
+      font-style: italic;
+      color: var(--slate-light);
+      margin-top: 0.75rem;
+      margin-bottom: 0;
+    }
+
+    /* ── Track record ── */
+    .record-entry {
+      margin-bottom: 2.5rem;
+    }
+
+    .record-entry:last-child {
+      margin-bottom: 0;
+    }
+
+    .record-entry h3 {
+      font-family: var(--font-serif);
+      font-size: 1.125rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .record-entry p {
+      font-size: 0.9375rem;
+    }
+
+    /* ── Why me ── */
+
+    /* ── Principles ── */
+    .principle {
+      padding: 1.5rem 0;
+      border-top: 1px solid var(--rule);
+    }
+
+    .principle:last-child {
+      padding-bottom: 0;
+    }
+
+    .principle h3 {
+      font-family: var(--font-sans);
+      font-weight: 600;
+      font-size: 0.9375rem;
+      color: var(--charcoal);
+      margin-bottom: 0.4rem;
+    }
+
+    .principle p {
+      font-size: 0.9375rem;
+      margin-bottom: 0;
+    }
+
+    /* ── Fit ── */
+    .fit-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .fit-list li {
+      font-size: 0.9375rem;
+      color: var(--slate);
+      padding: 0.35rem 0;
+      padding-left: 1.25rem;
+      position: relative;
+    }
+
+    .fit-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.7rem;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    .fit-list--not li::before {
+      background: var(--slate-light);
+    }
+
+    .fit-heading {
+      font-family: var(--font-sans);
+      font-weight: 600;
+      font-size: 0.9375rem;
+      color: var(--charcoal);
+      margin-bottom: 0.75rem;
+      margin-top: 2rem;
+    }
+
+    .fit-heading:first-of-type {
+      margin-top: 0;
+    }
+
+    /* ── CTA ── */
+    .cta {
+      padding: 3.5rem 0;
+      text-align: center;
+    }
+
+    .cta h2 {
+      margin-bottom: 1rem;
+    }
+
+    .cta p {
+      font-size: 1rem;
+      max-width: 480px;
+      margin: 0 auto 2rem;
+    }
+
+    .cta-link {
+      display: inline-block;
+      font-family: var(--font-sans);
+      font-weight: 600;
+      font-size: 1rem;
+      color: var(--sand-light);
+      background: var(--charcoal);
+      text-decoration: none;
+      padding: 0.875rem 2.25rem;
+      border-radius: 4px;
+      transition: background 0.15s;
+    }
+
+    .cta-link:hover {
+      background: var(--accent);
+    }
+
+    .cta-meta {
+      font-size: 0.8125rem;
+      color: var(--slate-light);
+      font-style: italic;
+      margin-top: 1.25rem;
     }
 
     /* ── Footer ── */
     footer {
-      padding: 2.5rem 0;
+      padding: 2rem 0;
+      border-top: 1px solid var(--rule);
     }
 
     .footer-inner {
@@ -209,121 +475,353 @@
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      gap: 1rem;
+      gap: 0.75rem;
     }
 
     .footer-name {
-      font-family: var(--font-sans);
-      font-size: 12px;
-      letter-spacing: 0.12em;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--ink-light);
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 1.5rem;
+      color: var(--slate-light);
     }
 
     .footer-links a {
-      font-family: var(--font-sans);
-      font-size: 12px;
-      color: var(--ink-light);
+      font-size: 0.75rem;
+      color: var(--slate-light);
       text-decoration: none;
-      letter-spacing: 0.05em;
       transition: color 0.15s;
     }
 
-    .footer-links a:hover { color: var(--ink); }
+    .footer-links a:hover { color: var(--charcoal); }
+
+    /* ── Responsive ── */
+    @media (max-width: 700px) {
+      .hero-intro {
+        flex-direction: column;
+        text-align: center;
+        gap: 1.5rem;
+      }
+
+      .hero-photo {
+        width: 180px;
+        height: 180px;
+      }
+
+      .proof-points {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      section {
+        padding: 2.5rem 0;
+      }
+
+      .hero {
+        padding: 2rem 0 2.5rem;
+      }
+    }
 
     @media (max-width: 480px) {
-      body { font-size: 16px; }
-      .container { padding: 0 1.25rem; }
-      header { padding: 2.5rem 0 2rem; }
+      body { font-size: 15px; }
+      .container, .container--wide { padding: 0 1.25rem; }
+
+      .tier {
+        padding: 1.5rem;
+      }
     }
   </style>
 </head>
 <body>
 
-  <div class="container">
-
-    <header>
-      <p class="wordmark">Jérôme Basdevant</p>
-      <h1>Becoming AI-native is a hard choice,<br><em>not a tool purchase.</em></h1>
-      <p class="lede">
-        I help software and product companies rethink what they build — not just how they work — in a world where agents can do what your users used to do manually.
-      </p>
-    </header>
-
-    <section>
-      <p class="section-label">The real questions</p>
-
-      <p>Your team uses Cursor. Your engineers prompt Claude. You've seen the demos.</p>
-
-      <div class="pull">
-        <p>Which parts of your product do AI agents make obsolete? Which become more valuable? What should you build next — and what should you stop building entirely?</p>
+  <!-- ════ HERO ════ -->
+  <header class="hero">
+    <div class="container">
+      <div class="hero-intro">
+        <img class="hero-photo" src="assets/jerome-basdevant_lg_2000px_01a.jpg" alt="Jérôme Basdevant — professional headshot, blue-grey blazer, arms crossed" width="2000" height="1333" />
+        <div class="hero-intro-text">
+          <p class="hero-eyebrow">AI Leadership Advisory</p>
+          <p class="hero-name">Jérôme Basdevant</p>
+          <p class="hero-title">AI leadership partner for teams that know they need to move but aren't sure where to start.</p>
+        </div>
       </div>
 
-      <p>Those are the hard questions. Not adopting AI tools, but rethinking your product, your roadmap, and your value proposition in a world that's moving faster than your planning cycle.</p>
+      <h1>AI is already inside your company. The question is who's leading it.</h1>
+      <p class="hero-sub">I help leadership teams figure out what AI actually changes about their business — and then make the shift real.</p>
+      <p class="hero-context">25 years building, scaling, and reinventing technology products across four countries.</p>
 
-      <p>Most companies skip this. They layer AI onto existing products and call it transformation. That works until it doesn't — and usually it shows up first in your retention numbers.</p>
-    </section>
+      <div class="proof-points">
+        <div class="proof-item">
+          <span class="proof-num">25 years</span>
+          <span class="proof-label">building products &amp; teams</span>
+        </div>
+        <div class="proof-item">
+          <span class="proof-num">2 SaaS platforms</span>
+          <span class="proof-label">built from scratch</span>
+        </div>
+        <div class="proof-item">
+          <span class="proof-num">0 &rarr; 50</span>
+          <span class="proof-label">product &amp; engineers scaled</span>
+        </div>
+        <div class="proof-item">
+          <span class="proof-num">3 funding rounds</span>
+          <span class="proof-label">Series A, B &amp; C</span>
+        </div>
+        <div class="proof-item">
+          <span class="proof-num">3 languages</span>
+          <span class="proof-label">FR &middot; EN &middot; ES</span>
+        </div>
+      </div>
+    </div>
+  </header>
 
-    <section>
-      <p class="section-label">How I work</p>
+  <hr class="section-rule" />
 
-      <p>I work with leadership teams at software and product companies to make the shift from <strong>AI-curious to AI-native</strong>. Not with a strategy deck. With a structured process and hands-on work.</p>
+  <!-- ════ THE PROBLEM ════ -->
+  <section>
+    <div class="container">
+      <p class="section-label">The Problem</p>
+      <h2>The tools are here. The leadership isn't.</h2>
 
-      <ul class="steps">
-        <li>
-          <span class="step-num">01</span>
-          <div class="step-body">
-            <strong>Diagnostic</strong>
-            <span>An honest look at where you actually stand — which parts of your product are at risk, which have leverage, and where your team's assumptions are wrong.</span>
+      <p>Your team is already using AI. Engineers prompt models. Someone built a prototype over a weekend. There's a pilot somewhere. Maybe two.</p>
+      <p>But nobody's answered the harder questions. Which processes should you automate and which should you rethink entirely? Where does AI create genuine competitive advantage — and where is it just faster busywork? What should you stop investing in? And who in your organisation actually owns this?</p>
+
+      <div class="callout">
+        Who in your organisation would know if the AI output was wrong?
+      </div>
+
+      <p>If nobody can answer that clearly, you don't have an AI strategy. You have a collection of experiments.</p>
+
+      <h3>This is happening everywhere, not just in software.</h3>
+
+      <div class="impact-area">
+        <p><strong>On go-to-market,</strong> AI is eating search, automating sales end to end, and collapsing finance workflows into agents. Danfoss used agentic AI to automate 80% of its transaction decisions, cutting customer response time from 42 hours to near-instant.</p>
+      </div>
+      <div class="impact-area">
+        <p><strong>On product,</strong> agents and LLMs are collapsing SaaS tool stacks. Your users won't click through five screens when an agent handles it in a sentence. The question isn't whether your product is affected — it's how much of it still needs to exist.</p>
+      </div>
+      <div class="impact-area">
+        <p><strong>On production and operations,</strong> the human inspector, the manual scheduler, the break-fix maintenance crew — all being replaced. AI vision systems achieve defect escape rates below 0.1%, compared to 5–15% for manual inspection. Over 40% of manufacturers are upgrading to AI-driven scheduling. Digital twins cut commissioning errors by 67%. Predictive maintenance reduces unplanned downtime by 43%.</p>
+      </div>
+
+      <p>These questions don't live in engineering. They live in leadership. And most leadership teams don't have anyone who can hold the technology, the strategy, and the organisational change in one conversation.</p>
+    </div>
+  </section>
+
+  <hr class="section-rule" />
+
+  <!-- ════ WHAT CHANGES ════ -->
+  <section>
+    <div class="container">
+      <p class="section-label">What Changes When I Show Up</p>
+      <p>This isn't a list of deliverables. It's what actually happens.</p>
+
+      <div class="outcome">
+        <h3>Your roadmap gets honest.</h3>
+        <p>30–50% of what you're building shouldn't exist. We find it, cut it, and redirect the energy toward what matters. You stop debating low-value features and start validating the right bets.</p>
+      </div>
+      <div class="outcome">
+        <h3>You ship in days, not sprints.</h3>
+        <p>When AI handles the scaffolding, your team focuses on the hard problems. Experiments run faster. Bad ideas die quicker. The cycle from "what if" to "here's the data" collapses.</p>
+      </div>
+      <div class="outcome">
+        <h3>Product and engineering act as one team.</h3>
+        <p>No more handoffs. No more "engineering doesn't understand the product" or "product doesn't understand the constraints." The people building understand the why. And that changes everything downstream.</p>
+      </div>
+      <div class="outcome">
+        <h3>Your leaders level up.</h3>
+        <p>The CTO stops firefighting. The founder steps out of the weeds. Key people grow into roles that didn't exist six months ago. I build capability that stays after I leave.</p>
+      </div>
+      <div class="outcome">
+        <h3>AI gets governed, not just deployed.</h3>
+        <p>Clear rules on what AI touches, what it doesn't, and who's accountable when the output is wrong. Including where you stand under the EU AI Act — not because a regulator is coming tomorrow, but because your clients and partners will ask.</p>
+      </div>
+      <div class="outcome">
+        <h3>Less theatre, more decisions.</h3>
+        <p>Fewer pilots that go nowhere. Fewer "AI strategy" decks that sit in a drawer. More hard choices made, documented, and executed. If it doesn't change how you work, it wasn't strategy.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-rule" />
+
+  <!-- ════ HOW I WORK ════ -->
+  <section>
+    <div class="container">
+      <p class="section-label">How I Work</p>
+      <p>Every engagement builds your capability, not your dependency on me.</p>
+
+      <div class="tiers">
+        <!-- Tier 1 -->
+        <article class="tier">
+          <p class="tier-eyebrow">Diagnostic</p>
+          <h3>"Where do we actually stand?"</h3>
+          <p class="tier-duration">AI Readiness Diagnostic — 2–4 weeks</p>
+          <p>Your team has opinions. Your board has questions. Nobody has the same picture.</p>
+          <ul>
+            <li>Where AI creates real advantage in your specific business — not generic use cases</li>
+            <li>What your team has already tried, what worked, what stalled and why</li>
+            <li>Whether your organisation is actually ready — skills, data, processes, governance</li>
+            <li>Honest assessment of risk: what happens if you do nothing vs. what happens if you move wrong</li>
+          </ul>
+          <div class="tier-result">
+            <p class="tier-result-label">What you get</p>
+            <p>A clear, shared picture. No jargon. Here's where you stand, here's what's at stake, here's where to focus first.</p>
           </div>
-        </li>
-        <li>
-          <span class="step-num">02</span>
-          <div class="step-body">
-            <strong>Strategy built on hard choices</strong>
-            <span>A clear point of view on what to build next. Not a list of opportunities — a prioritised bet, with the reasoning behind it.</span>
+        </article>
+
+        <!-- Tier 2 -->
+        <article class="tier">
+          <p class="tier-eyebrow">Strategy</p>
+          <h3>"What do we actually do?"</h3>
+          <p class="tier-duration">Strategy &amp; Hard Choices — 2–4 weeks</p>
+          <p>You know the landscape is shifting. Now you need to decide — together.</p>
+          <p>Starts with a <strong>facilitated AI Strategy Workshop</strong> — a card deck-based session where your leadership team builds a shared vocabulary, maps opportunities to your actual business, and confronts forced choices: build vs. buy, automate vs. augment, invest vs. let go. The workshop surfaces the real disagreements and assumptions that would otherwise stay hidden until they become expensive.</p>
+          <p>Then we translate those decisions into a prioritised plan: what to build, what to stop, and in what order. Not a 12-month roadmap — those are fiction. A 90-day action plan with clear ownership.</p>
+          <div class="tier-result">
+            <p class="tier-result-label">What you get</p>
+            <p>Alignment that sticks. A plan your team actually believes in because they built it — with real decisions behind it, not wishful thinking.</p>
           </div>
-        </li>
-        <li>
-          <span class="step-num">03</span>
-          <div class="step-body">
-            <strong>Hands-on execution</strong>
-            <span>I work directly with your product and engineering teams. The change has to become real, not just credible on a slide.</span>
+          <p class="tier-note">The AI Strategy Workshop can also run as a standalone engagement — a natural entry point and a way to see how I work.</p>
+        </article>
+
+        <!-- Tier 3 -->
+        <article class="tier">
+          <p class="tier-eyebrow">Embedded</p>
+          <h3>"Help us actually change."</h3>
+          <p class="tier-duration">Embedded Transformation — 3–6 months</p>
+          <p>You have the strategy. Now the work starts.</p>
+          <ul>
+            <li>Embedded with the team 1–2 days/week</li>
+            <li>Coaching product and engineering leads through new ways of building</li>
+            <li>Redesigning workflows, roles, and decision rights around AI</li>
+            <li>Regular checkpoints with leadership — course-correcting, not just reporting</li>
+          </ul>
+          <div class="tier-result">
+            <p class="tier-result-label">What you get</p>
+            <p>Actual change. Not a plan on a shelf. A team that builds differently, decides faster, and doesn't need me to keep going.</p>
           </div>
-        </li>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-rule" />
+
+  <!-- ════ TRACK RECORD ════ -->
+  <section>
+    <div class="container">
+      <p class="section-label">Track Record</p>
+      <h2>Built it, scaled it, then reinvented it when AI changed the rules.</h2>
+
+      <div class="record-entry">
+        <h3>Datamaran — Co-founder &amp; CTO (12 years)</h3>
+        <p>Built an ESG and regulatory intelligence SaaS platform from an empty room to a company serving enterprise clients globally. Scaled the product and engineering team from interns to 50 people. Raised Series A, B, and C. Led due diligence from inside the company.</p>
+        <p>When generative AI arrived, I faced the hard question myself: which parts of a decade-old product does AI make obsolete? Which become more valuable? What should we stop building? I set the AI strategy, built the agentic AI pod, and redesigned how the team works. That wasn't consulting. That was survival.</p>
+      </div>
+
+      <div class="record-entry">
+        <h3>ZS Associates — New York (11 years)</h3>
+        <p>Built and led a SaaS BI/analytics platform serving the life sciences industry. Created a Marketing Analytics Center of Excellence. Led data warehouse implementations and CRM rollouts across Europe.</p>
+      </div>
+
+      <div class="record-entry">
+        <h3>Teaching &amp; Mentoring</h3>
+        <p>Lecturer in AI and emerging technologies at Audencia's Chief Value Officer executive programme. Engineering leadership mentor at Plato. Responsible tech mentor at All Tech Is Human. Because every engagement should build capability, not dependency.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-rule" />
+
+  <!-- ════ WHY ME ════ -->
+  <section>
+    <div class="container">
+      <p class="section-label">Why Me, Not Someone Else</p>
+
+      <p>Most people in this space are either strategy consultants who deliver a deck and leave — they've never shipped a product — or AI specialists who go deep on models but don't understand the business, or operational leaders who keep the lights on but aren't driving a transformation.</p>
+      <p>I sit at the intersection: technology, product, and organisational change. And I've been on both sides — the executive inside a company making the calls with real consequences, and the advisor entering from outside to diagnose and deliver.</p>
+      <p>I've been the CTO inside two companies navigating the AI shift. Not watching from outside — building, breaking things, making calls that cost money when they were wrong. That practitioner background is what lets me hold the technology conversation and the strategy conversation at the same time, without needing three different consultants in the room.</p>
+      <p>The conversation most advisors avoid is the "what to stop" conversation. It's easier to recommend adding things. I help you figure out what to kill.</p>
+      <p>I work across France, Spain, and the UK with native cultural fluency in all three — not just translation. And every engagement is designed to leave your team stronger than I found them. I build capability, not dependency.</p>
+    </div>
+  </section>
+
+  <hr class="section-rule" />
+
+  <!-- ════ PRINCIPLES ════ -->
+  <section>
+    <div class="container">
+      <p class="section-label">Principles</p>
+      <h2>How I lead.</h2>
+
+      <div class="principle">
+        <h3>Trust first, then challenge.</h3>
+        <p>Give people ambitious problems and the space to solve them. I've seen interns build production products and junior engineers become innovation leaders — when you trust them enough to try.</p>
+      </div>
+      <div class="principle">
+        <h3>Outcomes over technical elegance.</h3>
+        <p>Client value comes first. The most elegant architecture means nothing if it doesn't solve a real problem.</p>
+      </div>
+      <div class="principle">
+        <h3>Build for now, not for a future that won't arrive.</h3>
+        <p>In the age of AI, don't over-engineer for a three-year horizon. Build what's needed, ship it, learn, adapt. The companies that win aren't the ones with the best plan — they're the ones that adapt fastest.</p>
+      </div>
+      <div class="principle">
+        <h3>Lead through synthesis, not authority.</h3>
+        <p>I build alignment by drawing out and integrating diverse perspectives. Better decisions, deeper buy-in.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-rule" />
+
+  <!-- ════ FIT ════ -->
+  <section>
+    <div class="container">
+      <p class="section-label">Fit</p>
+      <h2>Where I make the biggest difference.</h2>
+
+      <p class="fit-heading">Great fit</p>
+      <ul class="fit-list">
+        <li>Software and product companies whose offering is being reshaped by AI agents</li>
+        <li>Deep tech and industrial companies where AI transforms R&amp;D, quality, or operations</li>
+        <li>Companies (roughly 15–200 people) that know AI matters but haven't figured out how to lead the shift</li>
+        <li>Leadership teams that want a real challenge, not validation</li>
+        <li>Founders and CEOs who believe engineers should understand the business, not just the backlog</li>
       </ul>
-    </section>
 
-    <section>
-      <p class="section-label">Background</p>
-      <p>
-        I'm Jérôme Basdevant. I spent twelve years building and scaling an AI-powered product in the ESG and regulatory intelligence space — first as CTO, then leading its innovation practice. I've seen what it takes to actually ship products that use AI as a core capability, not a feature.
-      </p>
-      <p>
-        I now advise software and product companies as an independent practice focused on the intersection of AI, product strategy, and the hard organisational work that makes transformation real.
-      </p>
+      <p class="fit-heading">Not the right fit</p>
+      <ul class="fit-list fit-list--not">
+        <li>If you want someone to impose process from the top down. I build from within.</li>
+        <li>If you need a hands-on engineer to write your code. I lead the people who do.</li>
+        <li>If you're looking for a training provider. I build capability through the work, not through courses.</li>
+      </ul>
+    </div>
+  </section>
 
-      <div class="contact-block">
-        <p>If this resonates, the best first step is a direct conversation.</p>
-        <a class="contact-link" href="mailto:jeromebasdevant@gmail.com">jeromebasdevant@gmail.com</a>
-      </div>
-    </section>
+  <hr class="section-rule" />
 
-    <footer>
+  <!-- ════ LET'S TALK ════ -->
+  <section class="cta">
+    <div class="container">
+      <h2>Let's Talk</h2>
+      <p>If AI is already changing how your company works and nobody owns the answer yet, I'd like to hear about it.</p>
+      <a class="cta-link" href="mailto:jerome@tresllum.com">Get in touch</a>
+      <p class="cta-meta">English &middot; French &middot; Spanish — native fluency in all three.<br>France &middot; Spain &middot; UK</p>
+    </div>
+  </section>
+
+  <!-- ════ FOOTER ════ -->
+  <footer>
+    <div class="container">
       <div class="footer-inner">
-        <span class="footer-name">Jérôme Basdevamt</span>
+        <span class="footer-name">Jérôme Basdevant</span>
         <nav class="footer-links">
           <a href="https://www.linkedin.com/in/jeromebasdevant/" target="_blank" rel="noopener">LinkedIn</a>
         </nav>
       </div>
-    </footer>
-
-  </div>
+    </div>
+  </footer>
 
 </body>
 </html>
