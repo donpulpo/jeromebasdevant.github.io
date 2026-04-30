@@ -175,6 +175,10 @@
       line-height: 1.6;
     }
 
+    .hero-cta {
+      margin-top: 2.5rem;
+    }
+
     /* ── Proof points ── */
     .proof-points {
       display: flex;
@@ -494,7 +498,119 @@
 
     .footer-links a:hover { color: var(--charcoal); }
 
+    /* ── Nav ── */
+    .site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--sand);
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+
+    .nav-logo {
+      font-family: var(--font-serif);
+      font-size: 1.125rem;
+      color: var(--charcoal);
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .nav-links a {
+      font-size: 0.9375rem;
+      color: var(--slate);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .nav-links a:hover { color: var(--charcoal); }
+
+    .nav-cta {
+      font-weight: 600;
+      font-size: 0.875rem;
+      color: var(--sand-light) !important;
+      background: var(--charcoal);
+      padding: 0.5rem 1.25rem;
+      border-radius: 4px;
+      transition: background 0.15s;
+    }
+
+    .nav-cta:hover { background: var(--accent) !important; }
+
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--charcoal);
+      border-radius: 2px;
+      transition: transform 0.2s, opacity 0.2s;
+    }
+
+    section, .hero, .cta {
+      scroll-margin-top: 64px;
+    }
+
     /* ── Responsive ── */
+    @media (max-width: 700px) {
+      .nav-toggle { display: flex; }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 64px;
+        left: 0;
+        right: 0;
+        background: var(--sand);
+        border-bottom: 1px solid var(--rule);
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 0.5rem 1.5rem 1rem;
+      }
+
+      .nav-links.is-open { display: flex; }
+
+      .nav-links li {
+        padding: 0.6rem 0;
+        border-bottom: 1px solid var(--rule);
+      }
+
+      .nav-links li:last-child {
+        border-bottom: none;
+        padding-top: 1rem;
+      }
+
+      .nav-cta {
+        display: block;
+        text-align: center;
+      }
+    }
+
     @media (max-width: 700px) {
       .hero-intro {
         flex-direction: column;
@@ -533,8 +649,25 @@
 </head>
 <body>
 
+  <!-- ════ NAV ════ -->
+  <nav class="site-nav">
+    <div class="container--wide nav-inner">
+      <a class="nav-logo" href="#top">Jérôme Basdevant</a>
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#top">Home</a></li>
+        <li><a href="#problem">The Problem</a></li>
+        <li><a href="#services">How I Work</a></li>
+        <li><a href="#track-record">Track Record</a></li>
+        <li><a class="nav-cta" href="https://cal.eu/jerome-basdevant/30min" target="_blank" rel="noopener">Book a call</a></li>
+      </ul>
+    </div>
+  </nav>
+
   <!-- ════ HERO ════ -->
-  <header class="hero">
+  <header class="hero" id="top">
     <div class="container">
       <div class="hero-intro">
         <img class="hero-photo" src="assets/jerome-basdevant_lg_2000px_01a.jpg" alt="Jérôme Basdevant — professional headshot, blue-grey blazer, arms crossed" width="2000" height="1333" />
@@ -571,13 +704,17 @@
           <span class="proof-label">FR &middot; EN &middot; ES</span>
         </div>
       </div>
+
+      <div class="hero-cta">
+        <a class="cta-link" href="https://cal.eu/jerome-basdevant/30min" target="_blank" rel="noopener">Book a call</a>
+      </div>
     </div>
   </header>
 
   <hr class="section-rule" />
 
   <!-- ════ THE PROBLEM ════ -->
-  <section>
+  <section id="problem">
     <div class="container">
       <p class="section-label">The Problem</p>
       <h2>The tools are here. The leadership isn't.</h2>
@@ -645,7 +782,7 @@
   <hr class="section-rule" />
 
   <!-- ════ HOW I WORK ════ -->
-  <section>
+  <section id="services">
     <div class="container">
       <p class="section-label">How I Work</p>
       <p>Every engagement builds your capability, not your dependency on me.</p>
@@ -708,7 +845,7 @@
   <hr class="section-rule" />
 
   <!-- ════ TRACK RECORD ════ -->
-  <section>
+  <section id="track-record">
     <div class="container">
       <p class="section-label">Track Record</p>
       <h2>Built it, scaled it, then reinvented it when AI changed the rules.</h2>
@@ -734,7 +871,7 @@
   <hr class="section-rule" />
 
   <!-- ════ WHY ME ════ -->
-  <section>
+  <section id="about">
     <div class="container">
       <p class="section-label">Why Me, Not Someone Else</p>
 
@@ -802,11 +939,11 @@
   <hr class="section-rule" />
 
   <!-- ════ LET'S TALK ════ -->
-  <section class="cta">
+  <section class="cta" id="contact">
     <div class="container">
       <h2>Let's Talk</h2>
       <p>If AI is already changing how your company works and nobody owns the answer yet, I'd like to hear about it.</p>
-      <a class="cta-link" href="mailto:jerome.basdevant@gmail.com">Get in touch</a>
+      <a class="cta-link" href="https://cal.eu/jerome-basdevant/30min" target="_blank" rel="noopener">Book a call</a>
       <p class="cta-meta">English &middot; French &middot; Spanish — native fluency in all three.<br>France &middot; Spain &middot; UK</p>
     </div>
   </section>
@@ -823,5 +960,19 @@
     </div>
   </footer>
 
+  <script>
+    const toggle = document.querySelector('.nav-toggle');
+    const links = document.getElementById('nav-links');
+    toggle.addEventListener('click', () => {
+      const open = links.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', open);
+    });
+    links.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        links.classList.remove('is-open');
+        toggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  </script>
 </body>
 </html>
