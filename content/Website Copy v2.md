@@ -126,7 +126,7 @@ Actual change. Not a plan on a shelf. A team that builds differently, decides fa
 ### Built it, scaled it, then reinvented it when AI changed the rules.
 
 **Datamaran — Co-founder & CTO (12 years)**
-Built an ESG and regulatory intelligence SaaS platform from an empty room to a company serving enterprise clients globally. Scaled the product and engineering team from interns to 50 people. Raised Series A, B, and C. Led due diligence from inside the company.
+Built an ESG and regulatory intelligence SaaS platform from an empty room to a company serving enterprise clients globally — distributed across countries from day one. Scaled the product and engineering team from interns to 50 people. Raised Series A, B, and C. Patent holder on the core AI extraction engine. Led due diligence from inside the company.
 
 When generative AI arrived, I faced the hard question myself: which parts of a decade-old product does AI make obsolete? Which become more valuable? What should we stop building? I set the AI strategy, built the agentic AI pod, and redesigned how the team works. That wasn't consulting. That was survival.
 
