@@ -1,0 +1,8 @@
+# macOS
+.DS_Store
+
+# Finder shortcuts (Obsidian, etc.)
+*.inetloc
+
+# Claude Code per-user settings
+.claude/settings.local.json
