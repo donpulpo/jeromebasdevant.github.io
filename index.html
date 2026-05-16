@@ -342,6 +342,32 @@
       margin-bottom: 0;
     }
 
+    /* ── Snapshot entry ── */
+    .snapshot-entry {
+      background: var(--sand-light);
+      border: 1px solid var(--rule);
+      border-left: 3px solid var(--accent);
+      border-radius: 4px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .snapshot-entry p {
+      font-size: 0.9375rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .snapshot-entry a {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--charcoal);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      transition: color 0.15s;
+    }
+
+    .snapshot-entry a:hover { color: var(--accent); }
+
     /* ── Track record ── */
     .record-entry {
       margin-bottom: 2.5rem;
@@ -659,7 +685,7 @@
       <ul class="nav-links" id="nav-links">
         <li><a href="#top">Home</a></li>
         <li><a href="#problem">The Problem</a></li>
-        <li><a href="#services">How I Work</a></li>
+        <li><a href="#engagements">Engagements</a></li>
         <li><a href="#track-record">Track Record</a></li>
         <li><a href="/snapshot">Snapshot</a></li>
         <li><a class="nav-cta" href="https://cal.eu/jerome-basdevant/30min" target="_blank" rel="noopener">Book a call</a></li>
@@ -782,11 +808,17 @@
 
   <hr class="section-rule" />
 
-  <!-- ════ HOW I WORK ════ -->
-  <section id="services">
+  <!-- ════ ENGAGEMENTS ════ -->
+  <section id="engagements">
     <div class="container">
-      <p class="section-label">How I Work</p>
+      <p class="section-label">Engagements</p>
       <p>Every engagement builds your capability, not your dependency on me.</p>
+
+      <div class="snapshot-entry">
+        <p class="tier-eyebrow">Start Here</p>
+        <p><strong>AI Leadership Snapshot</strong> — 10 minutes, free. A 1-page read of where you stand. If we both see something worth digging into, the full AI Readiness Diagnostic goes deeper over 2–4 weeks.</p>
+        <a href="/snapshot">Take the Snapshot →</a>
+      </div>
 
       <div class="tiers">
         <!-- Tier 1 -->
@@ -824,9 +856,9 @@
 
         <!-- Tier 3 -->
         <article class="tier">
-          <p class="tier-eyebrow">Embedded</p>
+          <p class="tier-eyebrow">Fractional CAIO</p>
           <h3>"Help us actually change."</h3>
-          <p class="tier-duration">Embedded Transformation — 3–6 months</p>
+          <p class="tier-duration">Fractional CAIO — 3–6 months</p>
           <p>You have the strategy. Now the work starts.</p>
           <ul>
             <li>Embedded with the team 1–2 days/week</li>
