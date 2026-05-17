@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Design System — Jérôme Basdevant Site v2</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --paper: #E5DED1;
+      --paper-deep: #D8CFBD;
+      --paper-light: #EBE5DA;
+      --ink: #1F262F;
+      --ink-70: rgba(31,38,47,0.74);
+      --ink-50: rgba(31,38,47,0.52);
+      --ink-30: rgba(31,38,47,0.32);
+      --rule: rgba(31,38,47,0.14);
+      --rule-strong: rgba(31,38,47,0.22);
+      --blue: #5B6F82;
+      --blue-deep: #3F5468;
+      --blue-light: #8AA0B5;
+
+      --serif: 'Instrument Serif', Georgia, serif;
+      --sans: 'Geist', system-ui, sans-serif;
+      --mono: 'Geist Mono', ui-monospace, monospace;
+    }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 15px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Layout shell ── */
+    .shell {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      min-height: 100vh;
+    }
+
+    aside {
+      position: sticky; top: 0;
+      height: 100vh;
+      padding: 36px 28px;
+      border-right: 1px solid var(--rule);
+      background: var(--paper);
+      overflow-y: auto;
+    }
+    .logo {
+      display: flex; align-items: baseline; gap: 12px;
+      font-family: var(--serif); font-size: 20px;
+      margin-bottom: 4px;
+    }
+    .logo-mark {
+      width: 24px; height: 24px; background: var(--ink); color: var(--paper);
+      border-radius: 4px; text-align: center; line-height: 24px;
+      font-family: var(--mono); font-size: 10px; font-weight: 500;
+      display: inline-block;
+      transform: translateY(2px);
+    }
+    .doc-label {
+      font-family: var(--mono); font-size: 10.5px;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--blue); margin-bottom: 32px;
+    }
+    .toc { list-style: none; }
+    .toc li { padding: 6px 0; }
+    .toc a {
+      display: block;
+      font-family: var(--mono); font-size: 11px;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--ink-70); text-decoration: none;
+      padding: 4px 0;
+      transition: color 0.15s;
+    }
+    .toc a:hover { color: var(--ink); }
+    .toc-num { color: var(--ink-30); margin-right: 8px; }
+
+    main {
+      padding: 56px 72px 120px;
+      max-width: 980px;
+    }
+
+    /* ── Header ── */
+    .doc-head {
+      margin-bottom: 64px;
+      padding-bottom: 36px;
+      border-bottom: 1px solid var(--rule);
+    }
+    .doc-head h1 {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: 64px;
+      line-height: 0.98;
+      letter-spacing: -0.025em;
+      margin-bottom: 16px;
+    }
+    .doc-head h1 .accent { color: var(--blue); font-style: italic; }
+    .doc-head p {
+      font-size: 17px;
+      line-height: 1.55;
+      color: var(--ink-70);
+      max-width: 60ch;
+    }
+    .doc-meta {
+      font-family: var(--mono); font-size: 10.5px;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--ink-50);
+      margin-top: 18px;
+      display: flex; gap: 24px;
+    }
+
+    /* ── Section ── */
+    .ds-section { padding: 56px 0; border-top: 1px solid var(--rule); }
+    .ds-section:first-of-type { border-top: none; padding-top: 0; }
+    .ds-section-head {
+      display: flex; align-items: baseline; gap: 16px;
+      margin-bottom: 28px;
+    }
+    .ds-section-num {
+      font-family: var(--mono); font-size: 10.5px;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--blue);
+    }
+    .ds-section h2 {
+      font-family: var(--serif); font-weight: 400;
+      font-size: 38px; line-height: 1.05; letter-spacing: -0.018em;
+    }
+    .ds-section h2 i { color: var(--blue); }
+    .ds-section-lede {
+      font-size: 16px; color: var(--ink-70);
+      max-width: 60ch; margin-bottom: 32px;
+    }
+
+    h3.ds-h3 {
+      font-family: var(--mono); font-size: 11px; font-weight: 500;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--ink-50);
+      margin: 36px 0 14px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    /* ── Colour swatches ── */
+    .swatches {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+    .swatch {
+      display: grid;
+      grid-template-columns: 88px 1fr;
+      gap: 16px;
+      align-items: stretch;
+      border: 1px solid var(--rule);
+      border-radius: 3px;
+      overflow: hidden;
+      background: var(--paper-light);
+    }
+    .swatch-chip { min-height: 84px; }
+    .swatch-body { padding: 14px 16px; }
+    .swatch-name { font-size: 14px; font-weight: 500; color: var(--ink); margin-bottom: 4px; }
+    .swatch-token {
+      font-family: var(--mono); font-size: 10.5px;
+      color: var(--ink-50); letter-spacing: 0.04em;
+      display: block; margin-bottom: 6px;
+    }
+    .swatch-role {
+      font-size: 12.5px; color: var(--ink-70); line-height: 1.45;
+    }
+
+    .palette-rules {
+      background: var(--paper-deep);
+      border-left: 3px solid var(--blue);
+      padding: 18px 22px;
+      margin-top: 24px;
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 19px;
+      line-height: 1.3;
+      color: var(--ink);
+    }
+    .palette-rules-key {
+      font-family: var(--mono); font-style: normal;
+      font-size: 10px; letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    /* ── Type ladder ── */
+    .type-row {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 32px;
+      align-items: baseline;
+      padding: 24px 0;
+      border-top: 1px solid var(--rule);
+    }
+    .type-row:first-child { border-top: none; }
+    .type-meta { padding-top: 6px; }
+    .type-role {
+      font-family: var(--mono); font-size: 10.5px;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 6px;
+    }
+    .type-name { font-size: 13px; font-weight: 500; margin-bottom: 4px; }
+    .type-specs { font-family: var(--mono); font-size: 11px; color: var(--ink-50); line-height: 1.5; }
+    .type-sample-display {
+      font-family: var(--serif); font-size: 56px; line-height: 1; letter-spacing: -0.025em;
+    }
+    .type-sample-display i { color: var(--blue); }
+    .type-sample-h2 {
+      font-family: var(--serif); font-size: 36px; line-height: 1.05; letter-spacing: -0.015em;
+    }
+    .type-sample-h3 {
+      font-family: var(--serif); font-size: 24px; line-height: 1.15;
+    }
+    .type-sample-body {
+      font-family: var(--sans); font-size: 16px; line-height: 1.6; color: var(--ink-70);
+      max-width: 52ch;
+    }
+    .type-sample-small {
+      font-family: var(--sans); font-size: 13px; line-height: 1.5; color: var(--ink-70);
+    }
+    .type-sample-mono {
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em;
+      text-transform: uppercase; color: var(--blue);
+    }
+    .type-sample-callout {
+      font-family: var(--serif); font-style: italic;
+      font-size: 28px; line-height: 1.25;
+      padding-left: 18px; border-left: 3px solid var(--blue);
+    }
+
+    /* ── Spacing grid ── */
+    .scale-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+    .scale-table th, .scale-table td {
+      text-align: left;
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--rule);
+    }
+    .scale-table th {
+      font-family: var(--mono); font-size: 10.5px;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--ink-50);
+      font-weight: 500;
+    }
+    .scale-bar {
+      height: 14px;
+      background: var(--blue);
+      border-radius: 2px;
+      opacity: 0.85;
+    }
+    .scale-token { font-family: var(--mono); font-size: 11px; color: var(--ink-70); }
+    .scale-val { font-family: var(--mono); font-size: 11px; color: var(--ink); }
+    .scale-use { color: var(--ink-70); font-size: 13px; }
+
+    /* ── Components ── */
+    .comp {
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      background: var(--paper-light);
+      margin-bottom: 28px;
+      overflow: hidden;
+    }
+    .comp-stage {
+      padding: 36px;
+      background:
+        linear-gradient(0deg, transparent 7px, rgba(31,38,47,0.08) 8px, transparent 9px),
+        var(--paper);
+      background-size: 100% 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 140px;
+    }
+    .comp-stage--dark {
+      background: var(--ink);
+      background-image:
+        linear-gradient(0deg, transparent 7px, rgba(244,239,229,0.08) 8px, transparent 9px);
+      background-size: 100% 24px;
+    }
+    .comp-stage--paper-deep {
+      background: var(--paper-deep);
+      background-image:
+        linear-gradient(0deg, transparent 7px, rgba(31,38,47,0.08) 8px, transparent 9px);
+      background-size: 100% 24px;
+    }
+    .comp-meta {
+      padding: 14px 18px;
+      border-top: 1px solid var(--rule);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      background: var(--paper-light);
+    }
+    .comp-name {
+      font-size: 13px; font-weight: 500;
+    }
+    .comp-note {
+      font-family: var(--mono); font-size: 10.5px;
+      color: var(--ink-50);
+      letter-spacing: 0.04em;
+    }
+
+    /* Button styles (mirror of site) */
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-family: var(--sans); font-weight: 500; font-size: 14px;
+      color: var(--paper); background: var(--ink);
+      text-decoration: none;
+      padding: 12px 22px; border-radius: 3px; border: none;
+      cursor: pointer;
+    }
+    .btn-primary:hover { background: var(--blue); }
+    .btn-secondary {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--sans); font-weight: 500; font-size: 14px;
+      color: var(--ink); background: transparent;
+      border: 1px solid var(--ink);
+      padding: 11px 20px; border-radius: 3px;
+      text-decoration: none;
+    }
+    .btn-snapshot {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--sans); font-size: 14px; font-weight: 500;
+      color: var(--paper); background: var(--blue);
+      text-decoration: none;
+      padding: 11px 18px; border-radius: 3px;
+    }
+
+    /* Spec table (mirror of site) */
+    .specs {
+      font-family: var(--mono); font-size: 11.5px;
+      color: var(--ink-70);
+      border-top: 1px solid var(--rule-strong);
+      padding-top: 4px;
+      min-width: 260px;
+    }
+    .spec-row {
+      display: flex; justify-content: space-between; gap: 12px;
+      padding: 9px 0;
+      border-bottom: 1px solid var(--rule);
+      letter-spacing: 0.04em;
+    }
+    .spec-row:last-child { border-bottom: none; }
+    .spec-k { color: var(--ink-50); letter-spacing: 0.12em; text-transform: uppercase; }
+    .spec-v { color: var(--ink); text-align: right; }
+    .spec-v.accent { color: var(--blue); }
+
+    /* Callout */
+    .callout-demo {
+      background: var(--paper-deep);
+      border-left: 3px solid var(--blue);
+      padding: 22px 26px;
+      font-family: var(--serif); font-style: italic;
+      font-size: 26px; line-height: 1.25;
+      color: var(--ink);
+      max-width: 540px;
+    }
+
+    /* Status pill */
+    .status-pill {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--mono); font-size: 10.5px;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--blue);
+    }
+    .status-dot {
+      width: 7px; height: 7px; border-radius: 50%; background: var(--blue);
+      box-shadow: 0 0 0 3px rgba(91,111,130,0.24);
+    }
+
+    /* Fit list */
+    .fit-demo { list-style: none; padding: 0; max-width: 460px; width: 100%; }
+    .fit-demo li {
+      padding: 12px 0 12px 24px;
+      font-size: 14.5px;
+      color: var(--ink-70);
+      position: relative;
+      border-bottom: 1px solid var(--rule);
+    }
+    .fit-demo li::before {
+      content: '+';
+      position: absolute; left: 0; top: 11px;
+      font-family: var(--mono); font-size: 14px; color: var(--blue);
+    }
+    .fit-demo--no li::before { content: '−'; color: var(--ink-30); }
+
+    /* Proof cell */
+    .proof-demo {
+      display: grid; grid-template-columns: 1fr 1fr 1fr;
+      width: 100%; max-width: 720px;
+      border: 1px solid var(--rule);
+      background: var(--paper);
+    }
+    .proof-demo-cell {
+      padding: 24px;
+      border-right: 1px solid var(--rule);
+    }
+    .proof-demo-cell:last-child { border-right: none; }
+    .proof-demo-key {
+      font-family: var(--mono); font-size: 10px;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--ink-50); margin-bottom: 10px;
+    }
+    .proof-demo-num {
+      font-family: var(--serif); font-size: 36px;
+      line-height: 0.95; letter-spacing: -0.02em;
+    }
+    .proof-demo-num .accent { color: var(--blue); font-style: italic; }
+    .proof-demo-sub {
+      font-family: var(--mono); font-size: 10px;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--ink-50); margin-top: 10px;
+    }
+
+    /* Section pattern blocks */
+    .pattern {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 24px;
+      padding: 24px 0;
+      border-top: 1px solid var(--rule);
+      align-items: center;
+    }
+    .pattern:first-of-type { border-top: none; }
+    .pattern-swatch {
+      height: 96px; border: 1px solid var(--rule);
+      border-radius: 3px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--mono); font-size: 11px;
+      letter-spacing: 0.14em; text-transform: uppercase;
+    }
+    .pattern-paper { background: var(--paper); color: var(--ink-50); }
+    .pattern-paper-deep { background: var(--paper-deep); color: var(--ink-50); }
+    .pattern-ink { background: var(--ink); color: rgba(244,239,229,0.6); }
+    .pattern h4 {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: 22px;
+      margin-bottom: 6px;
+    }
+    .pattern p { font-size: 14px; color: var(--ink-70); }
+    .pattern p code {
+      font-family: var(--mono); font-size: 11.5px;
+      color: var(--blue);
+    }
+
+    /* Brand */
+    .brand-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 16px;
+    }
+    .brand-card {
+      padding: 28px 24px;
+      border: 1px solid var(--rule);
+      background: var(--paper-light);
+      border-radius: 3px;
+    }
+    .brand-mark-lg {
+      width: 80px; height: 80px;
+      background: var(--ink); color: var(--paper);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--mono); font-size: 26px; font-weight: 500;
+      letter-spacing: 0.04em;
+      margin-bottom: 16px;
+    }
+    .brand-card h4 {
+      font-family: var(--mono); font-size: 11px;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--ink-50);
+      margin-bottom: 6px;
+    }
+    .brand-card p { font-size: 13px; line-height: 1.5; color: var(--ink-70); }
+
+    .voice-list {
+      list-style: none; padding: 0;
+    }
+    .voice-list li {
+      padding: 14px 0;
+      border-top: 1px solid var(--rule);
+      display: grid;
+      grid-template-columns: 100px 1fr 1fr;
+      gap: 24px;
+      align-items: baseline;
+    }
+    .voice-list li:first-child { border-top: none; }
+    .voice-tag {
+      font-family: var(--mono); font-size: 10.5px;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--blue);
+    }
+    .voice-yes { font-size: 14px; color: var(--ink); }
+    .voice-no { font-size: 14px; color: var(--ink-50); text-decoration: line-through; text-decoration-color: var(--blue); }
+
+    @media (max-width: 900px) {
+      .shell { grid-template-columns: 1fr; }
+      aside { position: static; height: auto; }
+      main { padding: 36px 28px 80px; }
+      .swatches { grid-template-columns: 1fr; }
+      .type-row { grid-template-columns: 1fr; gap: 12px; }
+      .brand-grid { grid-template-columns: 1fr; }
+      .pattern { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="shell">
+  <aside>
+    <div class="logo"><span class="logo-mark">JB</span><span>Basdevant</span></div>
+    <div class="doc-label">Design System · v1</div>
+    <ul class="toc">
+      <li><a href="#colour"><span class="toc-num">01</span>Colour</a></li>
+      <li><a href="#type"><span class="toc-num">02</span>Type</a></li>
+      <li><a href="#scale"><span class="toc-num">03</span>Scale &amp; rhythm</a></li>
+      <li><a href="#patterns"><span class="toc-num">04</span>Section patterns</a></li>
+      <li><a href="#components"><span class="toc-num">05</span>Components</a></li>
+      <li><a href="#brand"><span class="toc-num">06</span>Brand &amp; voice</a></li>
+    </ul>
+  </aside>
+
+  <main>
+    <div class="doc-head">
+      <h1>Design <i>system.</i></h1>
+      <p>The bones underneath <strong>Site v2</strong> — colour tokens, type ladder, spacing scale, section patterns, and the components that recur across the page. Use this when extending the site (new pages, blog, snapshot tool, future Substack embed) so everything stays in the same family without re-deciding the same questions.</p>
+      <div class="doc-meta">
+        <span>Version 1.0</span>
+        <span>Updated · May 2026</span>
+        <span style="color:var(--blue);">● Working spec</span>
+      </div>
+    </div>
+
+    <!-- ═══════════ 01 · COLOUR ═══════════ -->
+    <section class="ds-section" id="colour">
+      <div class="ds-section-head">
+        <span class="ds-section-num">01</span>
+        <h2>Colour — pulled from the <i>photograph.</i></h2>
+      </div>
+      <p class="ds-section-lede">Four tones do almost all the work — and each is extracted from the headshot. The paper is the photo's sand backdrop. The ink is the shadow-side navy. The accent is the blue of the blazer itself. Nothing was invented; the palette was already in the picture.</p>
+
+      <h3 class="ds-h3">Surfaces &amp; ink</h3>
+      <div class="swatches">
+        <div class="swatch">
+          <div class="swatch-chip" style="background: var(--paper);"></div>
+          <div class="swatch-body">
+            <div class="swatch-name">Paper</div>
+            <span class="swatch-token">--paper · #E5DED1</span>
+            <div class="swatch-role">Default surface. ~85% of canvas.</div>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-chip" style="background: var(--paper-deep);"></div>
+          <div class="swatch-body">
+            <div class="swatch-name">Paper deep</div>
+            <span class="swatch-token">--paper-deep · #D8CFBD</span>
+            <div class="swatch-role">Tonal shift blocks: impact areas, CTA, callout fills.</div>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-chip" style="background: var(--paper-light);"></div>
+          <div class="swatch-body">
+            <div class="swatch-name">Paper light</div>
+            <span class="swatch-token">--paper-light · #EBE5DA</span>
+            <div class="swatch-role">Card fill, optional. Subtle lift inside a Paper section.</div>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-chip" style="background: var(--ink);"></div>
+          <div class="swatch-body">
+            <div class="swatch-name">Ink</div>
+            <span class="swatch-token">--ink · #1F262F</span>
+            <div class="swatch-role">All body text on light surfaces. Inversion block surface (Engagements, Footer).</div>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="ds-h3">Accents</h3>
+      <div class="swatches">
+        <div class="swatch">
+          <div class="swatch-chip" style="background: var(--blue);"></div>
+          <div class="swatch-body">
+            <div class="swatch-name">Blazer blue</div>
+            <span class="swatch-token">--blue · #5B6F82</span>
+            <div class="swatch-role">The accent. Italics, mono labels, status dot, callout rule, button hover. Same blue as the blazer.</div>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-chip" style="background: var(--blue-deep);"></div>
+          <div class="swatch-body">
+            <div class="swatch-name">Blazer deep</div>
+            <span class="swatch-token">--blue-deep · #3F5468</span>
+            <div class="swatch-role">Active &amp; visited links. The shadow-side navy from the photo. Rare.</div>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-chip" style="background: var(--blue-light);"></div>
+          <div class="swatch-body">
+            <div class="swatch-name">Blazer pale</div>
+            <span class="swatch-token">--blue-light · #8AA0B5</span>
+            <div class="swatch-role">Reserved — a lifted version of blazer blue for future dark-surface needs. Not currently in active use on Site v2.</div>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-chip" style="background: linear-gradient(to bottom, var(--ink-70), var(--ink-30));"></div>
+          <div class="swatch-body">
+            <div class="swatch-name">Ink scale</div>
+            <span class="swatch-token">--ink-70 / 50 / 30</span>
+            <div class="swatch-role">Body 70%, captions 50%, hairline glyphs 30%. Use the scale, don't invent new alphas.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="palette-rules">
+        <span class="palette-rules-key">Rule of thumb</span>
+        "If you're reaching for a fifth colour, you're solving the wrong problem. Make the existing four work harder before adding a new hue."
+      </div>
+    </section>
+
+    <!-- ═══════════ 02 · TYPE ═══════════ -->
+    <section class="ds-section" id="type">
+      <div class="ds-section-head">
+        <span class="ds-section-num">02</span>
+        <h2>Type — one serif, one sans, one <i>mono.</i></h2>
+      </div>
+      <p class="ds-section-lede">Three families, in clearly separate roles. Instrument Serif carries voice; Geist carries clarity; Geist Mono carries structure (labels, numbers, dates, codes, utility chrome). Never use mono for body, never use serif for nav.</p>
+
+      <div class="type-row">
+        <div class="type-meta">
+          <div class="type-role">Display H1</div>
+          <div class="type-name">Instrument Serif · 400</div>
+          <div class="type-specs">clamp(2.6rem, 6.4vw, 5.4rem)<br/>line-height: 0.98<br/>tracking: −0.025em</div>
+        </div>
+        <div class="type-sample-display">AI is already <i>inside.</i></div>
+      </div>
+
+      <div class="type-row">
+        <div class="type-meta">
+          <div class="type-role">Section H2</div>
+          <div class="type-name">Instrument Serif · 400</div>
+          <div class="type-specs">clamp(2rem, 4vw, 3rem)<br/>line-height: 1.04<br/>tracking: −0.015em</div>
+        </div>
+        <div class="type-sample-h2">The tools are here. <i>The leadership isn't.</i></div>
+      </div>
+
+      <div class="type-row">
+        <div class="type-meta">
+          <div class="type-role">Card / outcome H3</div>
+          <div class="type-name">Instrument Serif · 400</div>
+          <div class="type-specs">1.4rem — 1.55rem<br/>line-height: 1.15</div>
+        </div>
+        <div class="type-sample-h3">Your roadmap gets honest.</div>
+      </div>
+
+      <div class="type-row">
+        <div class="type-meta">
+          <div class="type-role">Pullquote / callout</div>
+          <div class="type-name">Instrument Serif · italic</div>
+          <div class="type-specs">1.5rem — 1.65rem<br/>line-height: 1.25<br/>3px blue-blazer left rule</div>
+        </div>
+        <div class="type-sample-callout">"Who in your organisation would know if the AI output was wrong?"</div>
+      </div>
+
+      <div class="type-row">
+        <div class="type-meta">
+          <div class="type-role">Body</div>
+          <div class="type-name">Geist · 400</div>
+          <div class="type-specs">16–17px<br/>line-height: 1.6<br/>colour: --ink-70</div>
+        </div>
+        <div class="type-sample-body">Your team is already using AI. Engineers prompt models. Someone built a prototype over a weekend. There's a pilot somewhere. Maybe more.</div>
+      </div>
+
+      <div class="type-row">
+        <div class="type-meta">
+          <div class="type-role">Small / caption</div>
+          <div class="type-name">Geist · 400</div>
+          <div class="type-specs">13–14.5px<br/>line-height: 1.5</div>
+        </div>
+        <div class="type-sample-small">Based in Spain · Working across Europe · FR · EN · ES — native fluency in all three.</div>
+      </div>
+
+      <div class="type-row">
+        <div class="type-meta">
+          <div class="type-role">Eyebrow / label</div>
+          <div class="type-name">Geist Mono · 400</div>
+          <div class="type-specs">10.5–11px<br/>letter-spacing: 0.16em<br/>uppercase · blazer blue</div>
+        </div>
+        <div class="type-sample-mono">Engagements · Strategy &amp; Hard Choices</div>
+      </div>
+
+      <div class="type-row">
+        <div class="type-meta">
+          <div class="type-role">Numerals</div>
+          <div class="type-name">Instrument Serif · 400</div>
+          <div class="type-specs">2.6rem · proof strip<br/>line-height: 0.95<br/>tracking: −0.02em<br/>italic = highlighted</div>
+        </div>
+        <div class="type-sample-display" style="font-size:42px;">25 · 02 · <i>0 → 50</i> · A·B·C</div>
+      </div>
+    </section>
+
+    <!-- ═══════════ 03 · SCALE ═══════════ -->
+    <section class="ds-section" id="scale">
+      <div class="ds-section-head">
+        <span class="ds-section-num">03</span>
+        <h2>Scale &amp; rhythm — generous, then <i>generous again.</i></h2>
+      </div>
+      <p class="ds-section-lede">The page breathes. Vertical rhythm comes from a 4-step section padding scale plus consistent 36–56px gutters inside content. There is no 8-point grid here — type and prose dictate spacing.</p>
+
+      <h3 class="ds-h3">Section padding (vertical)</h3>
+      <table class="scale-table">
+        <thead><tr><th>Token</th><th style="width:120px;">px</th><th style="width:50%;">Use</th><th>Bar</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="scale-token">--pad-xs</td>
+            <td class="scale-val">10px</td>
+            <td class="scale-use">Utility bar</td>
+            <td><div class="scale-bar" style="width:8%;"></div></td>
+          </tr>
+          <tr>
+            <td class="scale-token">--pad-sm</td>
+            <td class="scale-val">28–32px</td>
+            <td class="scale-use">Card padding (snapshot, spec table)</td>
+            <td><div class="scale-bar" style="width:22%;"></div></td>
+          </tr>
+          <tr>
+            <td class="scale-token">--pad-md</td>
+            <td class="scale-val">56–64px</td>
+            <td class="scale-use">Mobile section padding · CTA inner</td>
+            <td><div class="scale-bar" style="width:45%;"></div></td>
+          </tr>
+          <tr>
+            <td class="scale-token">--pad-lg</td>
+            <td class="scale-val">72px</td>
+            <td class="scale-use">Dense sections (impact areas)</td>
+            <td><div class="scale-bar" style="width:60%;"></div></td>
+          </tr>
+          <tr>
+            <td class="scale-token">--pad-xl</td>
+            <td class="scale-val">88px</td>
+            <td class="scale-use">Standard desktop section</td>
+            <td><div class="scale-bar" style="width:74%;"></div></td>
+          </tr>
+          <tr>
+            <td class="scale-token">--pad-2xl</td>
+            <td class="scale-val">104–110px</td>
+            <td class="scale-use">Hero · CTA</td>
+            <td><div class="scale-bar" style="width:90%;"></div></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 class="ds-h3">Containers</h3>
+      <table class="scale-table">
+        <thead><tr><th>Token</th><th style="width:120px;">Max-width</th><th>Use</th></tr></thead>
+        <tbody>
+          <tr><td class="scale-token">.wrap--narrow</td><td class="scale-val">820px</td><td class="scale-use">CTA, single-column reading</td></tr>
+          <tr><td class="scale-token">.wrap</td><td class="scale-val">1180px</td><td class="scale-use">Default — every section</td></tr>
+          <tr><td class="scale-token">Gutter</td><td class="scale-val">40px / 28px (mobile)</td><td class="scale-use">Side padding</td></tr>
+        </tbody>
+      </table>
+
+      <h3 class="ds-h3">Grid gutters (inside sections)</h3>
+      <table class="scale-table">
+        <thead><tr><th>Token</th><th style="width:120px;">px</th><th>Use</th></tr></thead>
+        <tbody>
+          <tr><td class="scale-token">gap-sm</td><td class="scale-val">16–24px</td><td class="scale-use">Inside cards</td></tr>
+          <tr><td class="scale-token">gap-md</td><td class="scale-val">36px</td><td class="scale-use">Section-head label ↔ title; record meta ↔ body</td></tr>
+          <tr><td class="scale-token">gap-lg</td><td class="scale-val">56px</td><td class="scale-use">Two-column layouts (Fit, Outcomes)</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- ═══════════ 04 · PATTERNS ═══════════ -->
+    <section class="ds-section" id="patterns">
+      <div class="ds-section-head">
+        <span class="ds-section-num">04</span>
+        <h2>Section patterns — three surfaces, used <i>on purpose.</i></h2>
+      </div>
+      <p class="ds-section-lede">The page has two main surfaces — Paper and Paper-deep — used in alternation to give the page rhythm. Dark Ink appears only as a terminal block at the very bottom (the footer). Engagements gets the lift, not the inversion.</p>
+
+      <div class="pattern">
+        <div class="pattern-swatch pattern-paper">Paper · default</div>
+        <div>
+          <h4>Paper · 85% of the page</h4>
+          <p>Hero, Why Now, What Changes, About, "What I believe", Fit. Body text in <code>--ink-70</code>, headings in <code>--ink</code>. Hairline rules between blocks.</p>
+        </div>
+      </div>
+
+      <div class="pattern">
+        <div class="pattern-swatch pattern-paper-deep">Paper deep · tonal shift</div>
+        <div>
+          <h4>Paper deep · ~10% — the breath</h4>
+          <p>Engagements section, CTA, and callout fills. The commercial heart of the page lives here — a subtle tonal lift that says "different beat, same world" without going dark. Pair with a 3px blazer-blue left rule for callouts and the snapshot card.</p>
+        </div>
+      </div>
+
+      <div class="pattern">
+        <div class="pattern-swatch pattern-ink">Ink · the footer</div>
+        <div>
+          <h4>Ink · ~3% — the terminal block</h4>
+          <p>Footer only. A small, quiet capstone at the bottom of the page. Mono uppercase glyphs at low alpha. Not used elsewhere — the page earns its weight through type and rhythm, not through inversion.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════ 05 · COMPONENTS ═══════════ -->
+    <section class="ds-section" id="components">
+      <div class="ds-section-head">
+        <span class="ds-section-num">05</span>
+        <h2>Components — the recurring <i>pieces.</i></h2>
+      </div>
+      <p class="ds-section-lede">Each component on the site, with its rules. When building new pages (snapshot tool, blog index, post template, the eventual Substack landing), reach for these first before inventing.</p>
+
+      <h3 class="ds-h3">Buttons</h3>
+      <div class="comp">
+        <div class="comp-stage">
+          <div style="display:flex; gap:14px; align-items:center; flex-wrap:wrap;">
+            <a class="btn-primary">Book a call <span aria-hidden="true">↗</span></a>
+            <a class="btn-secondary">View the Snapshot →</a>
+            <a class="btn-snapshot">Take the Snapshot →</a>
+          </div>
+        </div>
+        <div class="comp-meta">
+          <span class="comp-name">Primary · Secondary · Snapshot</span>
+          <span class="comp-note">3px radius · 11–14px vertical · 18–22px horizontal · Geist 500</span>
+        </div>
+      </div>
+
+      <h3 class="ds-h3">Status pill (utility bar)</h3>
+      <div class="comp">
+        <div class="comp-stage" style="background: var(--paper); border-bottom: 1px solid var(--rule); min-height: 64px;">
+          <div class="status-pill"><span class="status-dot"></span>Taking engagements · Q3 2026</div>
+        </div>
+        <div class="comp-meta">
+          <span class="comp-name">Status pill</span>
+          <span class="comp-note">Mono · 10.5px · 0.14em · dot with 3px blazer-blue glow</span>
+        </div>
+      </div>
+
+      <h3 class="ds-h3">Callout pullquote</h3>
+      <div class="comp">
+        <div class="comp-stage">
+          <div class="callout-demo">"Who in your organisation would know if the AI output was wrong?"</div>
+        </div>
+        <div class="comp-meta">
+          <span class="comp-name">Callout</span>
+          <span class="comp-note">Paper-deep fill · 3px blue-blazer left rule · Instrument Serif italic · 1.5–1.65rem</span>
+        </div>
+      </div>
+
+      <h3 class="ds-h3">Proof cell (numerical strip)</h3>
+      <div class="comp">
+        <div class="comp-stage" style="background: var(--paper); padding: 0;">
+          <div class="proof-demo">
+            <div class="proof-demo-cell">
+              <div class="proof-demo-key">Tenure</div>
+              <div class="proof-demo-num">25</div>
+              <div class="proof-demo-sub">Building products</div>
+            </div>
+            <div class="proof-demo-cell">
+              <div class="proof-demo-key">Team scaled</div>
+              <div class="proof-demo-num"><span class="accent">0 → 50</span></div>
+              <div class="proof-demo-sub">Product &amp; engineers</div>
+            </div>
+            <div class="proof-demo-cell">
+              <div class="proof-demo-key">Rounds</div>
+              <div class="proof-demo-num">A · B · C</div>
+              <div class="proof-demo-sub">Series, all three</div>
+            </div>
+          </div>
+        </div>
+        <div class="comp-meta">
+          <span class="comp-name">Proof cell</span>
+          <span class="comp-note">Mono key · Serif numeral 2.6rem · Mono sub · 1px rule dividers · italic = highlight</span>
+        </div>
+      </div>
+
+      <h3 class="ds-h3">Spec table (inside Engagement tier)</h3>
+      <div class="comp">
+        <div class="comp-stage comp-stage--paper-deep">
+          <div class="specs">
+            <div class="spec-row"><span class="spec-k">Format</span><span class="spec-v">Workshop + plan</span></div>
+            <div class="spec-row"><span class="spec-k">Duration</span><span class="spec-v accent">2–4 weeks</span></div>
+            <div class="spec-row"><span class="spec-k">Output</span><span class="spec-v">90-day plan</span></div>
+            <div class="spec-row"><span class="spec-k">Audience</span><span class="spec-v">Leadership team</span></div>
+          </div>
+        </div>
+        <div class="comp-meta">
+          <span class="comp-name">Spec table</span>
+          <span class="comp-note">Mono 11.5px · Key in ink-50 · Value in ink · Headline value in blazer-blue</span>
+        </div>
+      </div>
+
+      <h3 class="ds-h3">Fit list (yes / no)</h3>
+      <div class="comp">
+        <div class="comp-stage" style="background: var(--paper); align-items: flex-start;">
+          <div style="display:flex; gap: 56px; width: 100%; max-width: 760px;">
+            <ul class="fit-demo">
+              <li>Software companies whose offering is reshaped by AI agents</li>
+              <li>Companies 15–200 people that know AI matters but haven't figured out how</li>
+            </ul>
+            <ul class="fit-demo fit-demo--no">
+              <li>If you want someone to impose process from the top down</li>
+              <li>If you need a hands-on engineer to write code</li>
+            </ul>
+          </div>
+        </div>
+        <div class="comp-meta">
+          <span class="comp-name">Fit list</span>
+          <span class="comp-note">+ blazer-blue · − ink-30 · Mono glyphs at 14px · 1px rule between items</span>
+        </div>
+      </div>
+
+      <h3 class="ds-h3">Snapshot card (engagement entry-point)</h3>
+      <div class="comp">
+        <div class="comp-stage comp-stage--paper-deep">
+          <div style="background: var(--paper); border: 1px solid var(--rule-strong); border-left: 3px solid var(--blue); padding: 22px 28px; border-radius: 2px; max-width: 640px; width: 100%; display: grid; grid-template-columns: 1fr auto; gap: 20px; align-items: center;">
+            <div>
+              <div style="font-family:var(--mono); font-size:10.5px; letter-spacing:0.16em; text-transform:uppercase; color:var(--blue); margin-bottom:8px;">Start here · 10 minutes · Free</div>
+              <p style="color: var(--ink-70); font-size: 15px; margin:0;"><strong style="color:var(--ink); font-weight:500;">AI Leadership Snapshot.</strong> A 1-page read of where you stand.</p>
+            </div>
+            <a class="btn-snapshot" style="white-space:nowrap;">Take the Snapshot →</a>
+          </div>
+        </div>
+        <div class="comp-meta">
+          <span class="comp-name">Snapshot card</span>
+          <span class="comp-note">Paper card with 3px blazer-blue left rule · Used once, at top of Engagements</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════ 06 · BRAND ═══════════ -->
+    <section class="ds-section" id="brand">
+      <div class="ds-section-head">
+        <span class="ds-section-num">06</span>
+        <h2>Brand &amp; voice — what stays consistent <i>everywhere.</i></h2>
+      </div>
+      <p class="ds-section-lede">A few non-visual rules that keep the site from drifting as it grows. Apply these to Substack copy, conference bios, the eventual snapshot tool, every email.</p>
+
+      <h3 class="ds-h3">Mark</h3>
+      <div class="brand-grid">
+        <div class="brand-card">
+          <div class="brand-mark-lg">JB</div>
+          <h4>Wordmark · "Jérôme Basdevant"</h4>
+          <p>The full name in Instrument Serif. Never abbreviate to "Jerome" without the accent. The two-letter JB lockup is for compact spots only — favicon, mobile nav, footer.</p>
+        </div>
+        <div class="brand-card">
+          <div style="background: var(--paper-deep); height: 80px; border-radius: 6px; margin-bottom: 16px; background-image: url(assets/jerome.jpg); background-size: cover; background-position: 62% 18%;"></div>
+          <h4>Headshot</h4>
+          <p>Used full-bleed in the hero column, never as a 220px circle avatar. The photo <em>is</em> the palette source: its sand backdrop, its shadow navy, and its blazer blue all become page tokens. Treat the headshot as canonical — never recropped, never recoloured.</p>
+        </div>
+        <div class="brand-card">
+          <div style="height: 80px; border-radius: 6px; margin-bottom: 16px; background: repeating-linear-gradient(135deg, var(--paper-deep) 0 10px, var(--paper) 10px 20px);"></div>
+          <h4>Placeholder pattern</h4>
+          <p>For any image we don't have yet (case logos, conference badges, future essay covers): a 135° stripe of paper / paper-deep. Never use stock photography or generated illustration.</p>
+        </div>
+      </div>
+
+      <h3 class="ds-h3">Voice — what to keep, what to cut</h3>
+      <ul class="voice-list">
+        <li>
+          <span class="voice-tag">Direct</span>
+          <span class="voice-yes">"What to kill."</span>
+          <span class="voice-no">"Strategic deprecation."</span>
+        </li>
+        <li>
+          <span class="voice-tag">Concrete</span>
+          <span class="voice-yes">"0 → 50 product &amp; engineers."</span>
+          <span class="voice-no">"Significant team growth."</span>
+        </li>
+        <li>
+          <span class="voice-tag">First-person</span>
+          <span class="voice-yes">"I help leadership teams."</span>
+          <span class="voice-no">"Our advisory practice helps."</span>
+        </li>
+        <li>
+          <span class="voice-tag">Honest</span>
+          <span class="voice-yes">"You have a collection of experiments."</span>
+          <span class="voice-no">"You have foundational AI initiatives in flight."</span>
+        </li>
+        <li>
+          <span class="voice-tag">Quiet flex</span>
+          <span class="voice-yes">"25 years building products."</span>
+          <span class="voice-no">"World-class technology leader."</span>
+        </li>
+      </ul>
+
+      <h3 class="ds-h3">When extending the site</h3>
+      <div class="palette-rules" style="background:var(--paper-deep); border-left-color: var(--blue);">
+        <span class="palette-rules-key">Five-question test before adding anything new</span>
+        Does it answer a real question someone asks before booking? · Does it reuse an existing component? · Does it stay inside the three-surface system (Paper / Paper-deep / Ink)? · Does the copy survive read-aloud over coffee? · Does it earn its place, or just fill it?
+      </div>
+    </section>
+
+  </main>
+</div>
+
+</body>
+</html>

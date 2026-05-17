@@ -8,851 +8,803 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>JB</text></svg>" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --sand: #E8DED1;
-      --sand-light: #F0E9DF;
-      --sand-dark: #D9CCBB;
-      --charcoal: #2C2C2C;
-      --slate: #4A4A4A;
-      --slate-light: #6E6E6E;
-      --accent: #6B7B8D;
-      --accent-light: #8A97A5;
-      --rule: rgba(44,44,44,0.10);
-      --font-serif: 'DM Serif Display', Georgia, serif;
-      --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+      --paper: #E5DED1;
+      --paper-deep: #D8CFBD;
+      --paper-light: #EBE5DA;
+      --ink: #1F262F;
+      --ink-70: rgba(31,38,47,0.74);
+      --ink-50: rgba(31,38,47,0.52);
+      --ink-30: rgba(31,38,47,0.32);
+      --rule: rgba(31,38,47,0.14);
+      --rule-strong: rgba(31,38,47,0.22);
+      --blue: #5B6F82;
+      --blue-deep: #3F5468;
+      --blue-light: #8AA0B5;
+
+      --serif: 'Instrument Serif', Georgia, 'Times New Roman', serif;
+      --sans: 'Geist', system-ui, -apple-system, sans-serif;
+      --mono: 'Geist Mono', ui-monospace, 'SF Mono', monospace;
     }
 
     html { scroll-behavior: smooth; }
 
     body {
-      background: var(--sand);
-      color: var(--charcoal);
-      font-family: var(--font-sans);
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
       font-size: 16px;
-      line-height: 1.7;
+      line-height: 1.65;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
 
-    /* ── Layout ── */
-    .container {
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 0 1.5rem;
-    }
+    /* ───── Layout ───── */
+    .wrap { max-width: 1180px; margin: 0 auto; padding: 0 40px; }
+    .wrap--narrow { max-width: 820px; margin: 0 auto; padding: 0 40px; }
+    section { padding: 72px 0; }
 
-    .container--wide {
-      max-width: 880px;
-      margin: 0 auto;
-      padding: 0 1.5rem;
-    }
-
-    /* ── Typography ── */
-    h1, h2, h3 {
-      font-family: var(--font-serif);
-      font-weight: 400;
-      color: var(--charcoal);
-    }
-
-    h1 {
-      font-size: clamp(2rem, 5vw, 2.75rem);
-      line-height: 1.2;
-      letter-spacing: -0.01em;
-    }
-
-    h2 {
-      font-size: clamp(1.5rem, 3.5vw, 2rem);
-      line-height: 1.25;
-      margin-bottom: 1rem;
-    }
-
-    h3 {
-      font-size: 1.25rem;
-      line-height: 1.35;
-      margin-bottom: 0.75rem;
-    }
-
-    p {
-      color: var(--slate);
-      margin-bottom: 1.25rem;
-    }
-
+    /* ───── Type ───── */
+    h1, h2, h3, h4 { font-family: var(--serif); font-weight: 400; letter-spacing: -0.015em; color: var(--ink); }
+    h1 { font-size: clamp(2.4rem, 5.6vw, 4.6rem); line-height: 0.98; letter-spacing: -0.025em; }
+    h2 { font-size: clamp(2rem, 4vw, 3rem); line-height: 1.04; }
+    h3 { font-size: 1.4rem; line-height: 1.2; }
+    em, i { font-style: italic; color: var(--blue); }
+    p { color: var(--ink-70); margin-bottom: 1.1rem; }
     p:last-child { margin-bottom: 0; }
+    strong { font-weight: 500; color: var(--ink); }
 
-    strong {
-      font-weight: 600;
-      color: var(--charcoal);
-    }
-
-    /* ── Section rhythm ── */
-    section {
-      padding: 3.5rem 0;
-    }
-
-    .section-rule {
-      border: none;
-      border-top: 1px solid var(--rule);
-      margin: 0;
-    }
-
-    .section-label {
-      font-family: var(--font-sans);
-      font-weight: 600;
-      font-size: 0.875rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 2rem;
-    }
-
-    /* ── Hero ── */
-    .hero {
-      padding: 3.5rem 0 4rem;
-    }
-
-    .hero-intro {
-      display: flex;
-      gap: 2.5rem;
-      align-items: center;
-      margin-bottom: 2rem;
-    }
-
-    .hero-photo {
-      width: 220px;
-      height: 220px;
-      border-radius: 50%;
-      object-fit: cover;
-      object-position: center 20%;
-      flex-shrink: 0;
-      image-rendering: auto;
-    }
-
-    .hero-intro-text {
-      flex: 1;
-    }
-
-    .hero-eyebrow {
-      font-family: var(--font-sans);
-      font-weight: 600;
-      font-size: 0.9375rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 0.75rem;
-    }
-
-    .hero-name {
-      font-family: var(--font-serif);
-      font-size: clamp(1.5rem, 3vw, 2rem);
-      color: var(--charcoal);
-      margin-bottom: 0.35rem;
-    }
-
-    .hero-title {
-      font-size: 0.9375rem;
-      color: var(--slate-light);
-      line-height: 1.5;
-    }
-
-    .hero h1 {
-      margin-bottom: 1.25rem;
-    }
-
-    .hero-sub {
-      font-size: 1.0625rem;
-      color: var(--slate);
-      line-height: 1.65;
-      margin-bottom: 1rem;
-    }
-
-    .hero-context {
-      font-size: 0.9375rem;
-      color: var(--slate-light);
-      line-height: 1.6;
-    }
-
-    .hero-cta {
-      margin-top: 2.5rem;
-    }
-
-    /* ── Proof points ── */
-    .proof-points {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem 2rem;
-      margin-top: 2.5rem;
-      padding-top: 2rem;
-      border-top: 1px solid var(--rule);
-    }
-
-    .proof-item {
-      display: flex;
-      align-items: baseline;
-      gap: 0.5rem;
-    }
-
-    .proof-num {
-      font-family: var(--font-serif);
-      font-size: 1.125rem;
-      color: var(--charcoal);
-    }
-
-    .proof-label {
-      font-size: 0.8125rem;
-      color: var(--slate-light);
-    }
-
-    /* ── Problem section ── */
-    .callout {
-      font-family: var(--font-serif);
-      font-style: italic;
-      font-size: 1.125rem;
-      line-height: 1.55;
-      color: var(--charcoal);
-      border-left: 2px solid var(--accent);
-      padding-left: 1.5rem;
-      margin: 2rem 0;
-    }
-
-    .impact-area {
-      margin-bottom: 1.25rem;
-    }
-
-    .impact-area:last-child {
-      margin-bottom: 0;
-    }
-
-    /* ── What changes ── */
-    .outcome {
-      padding: 1.5rem 0;
-      border-top: 1px solid var(--rule);
-    }
-
-    .outcome:last-child {
-      padding-bottom: 0;
-    }
-
-    .outcome h3 {
-      font-family: var(--font-sans);
-      font-weight: 600;
-      font-size: 0.9375rem;
-      color: var(--charcoal);
-      margin-bottom: 0.5rem;
-    }
-
-    .outcome p {
-      font-size: 0.9375rem;
-      margin-bottom: 0;
-    }
-
-    /* ── Engagement tiers ── */
-    .tiers {
-      display: grid;
-      gap: 1.5rem;
-      margin-top: 2rem;
-    }
-
-    .tier {
-      background: var(--sand-light);
-      border: 1px solid var(--rule);
-      border-radius: 6px;
-      padding: 2rem 2rem 2.25rem;
-    }
-
-    .tier-eyebrow {
-      font-family: var(--font-sans);
-      font-weight: 600;
-      font-size: 0.6875rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 0.75rem;
-    }
-
-    .tier h3 {
-      font-family: var(--font-serif);
-      font-size: 1.375rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .tier-duration {
-      font-size: 0.8125rem;
-      color: var(--slate-light);
-      font-style: italic;
-      margin-bottom: 1.25rem;
-    }
-
-    .tier p {
-      font-size: 0.9375rem;
-      margin-bottom: 1rem;
-    }
-
-    .tier ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    .tier ul li {
-      font-size: 0.9375rem;
-      color: var(--slate);
-      padding: 0.3rem 0;
-      padding-left: 1.25rem;
-      position: relative;
-    }
-
-    .tier ul li::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0.7rem;
-      width: 5px;
-      height: 5px;
-      border-radius: 50%;
-      background: var(--accent);
-    }
-
-    .tier-result {
-      margin-top: 1.25rem;
-      padding-top: 1rem;
-      border-top: 1px solid var(--rule);
-    }
-
-    .tier-result-label {
-      font-weight: 600;
-      font-size: 0.8125rem;
-      color: var(--charcoal);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: 0.35rem;
-    }
-
-    .tier-result p {
-      margin-bottom: 0;
-    }
-
-    .tier-note {
-      font-size: 0.875rem;
-      font-style: italic;
-      color: var(--slate-light);
-      margin-top: 0.75rem;
-      margin-bottom: 0;
-    }
-
-    /* ── Snapshot entry ── */
-    .snapshot-entry {
-      background: var(--sand-light);
-      border: 1px solid var(--rule);
-      border-left: 3px solid var(--accent);
-      border-radius: 4px;
-      padding: 1.25rem 1.5rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .snapshot-entry p {
-      font-size: 0.9375rem;
-      margin-bottom: 0.75rem;
-    }
-
-    .snapshot-entry a {
-      font-size: 0.875rem;
-      font-weight: 600;
-      color: var(--charcoal);
-      text-decoration: underline;
-      text-underline-offset: 3px;
-      transition: color 0.15s;
-    }
-
-    .snapshot-entry a:hover { color: var(--accent); }
-
-    /* ── Track record ── */
-    .record-entry {
-      margin-bottom: 2.5rem;
-    }
-
-    .record-entry:last-child {
-      margin-bottom: 0;
-    }
-
-    .record-entry h3 {
-      font-family: var(--font-serif);
-      font-size: 1.125rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .record-entry p {
-      font-size: 0.9375rem;
-    }
-
-    .record-entry ul {
-      list-style: none;
-      padding: 0;
-      margin-top: 0.25rem;
-    }
-
-    .record-entry ul li {
-      font-size: 0.9375rem;
-      color: var(--slate);
-      padding: 0.3rem 0;
-      padding-left: 1.25rem;
-      position: relative;
-    }
-
-    .record-entry ul li::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0.7rem;
-      width: 5px;
-      height: 5px;
-      border-radius: 50%;
-      background: var(--accent);
-    }
-
-    /* ── About sub-labels ── */
-    .sub-label {
-      margin-top: 3rem;
-    }
-
-    /* ── Principles ── */
-    .principle {
-      padding: 1.5rem 0;
-      border-top: 1px solid var(--rule);
-    }
-
-    .principle:last-child {
-      padding-bottom: 0;
-    }
-
-    .principle h3 {
-      font-family: var(--font-sans);
-      font-weight: 600;
-      font-size: 0.9375rem;
-      color: var(--charcoal);
-      margin-bottom: 0.4rem;
-    }
-
-    .principle p {
-      font-size: 0.9375rem;
-      margin-bottom: 0;
-    }
-
-    /* ── Fit ── */
-    .fit-list {
-      list-style: none;
-      padding: 0;
-    }
-
-    .fit-list li {
-      font-size: 0.9375rem;
-      color: var(--slate);
-      padding: 0.35rem 0;
-      padding-left: 1.25rem;
-      position: relative;
-    }
-
-    .fit-list li::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0.7rem;
-      width: 5px;
-      height: 5px;
-      border-radius: 50%;
-      background: var(--accent);
-    }
-
-    .fit-list--not li::before {
-      background: var(--slate-light);
-    }
-
-    .fit-heading {
-      font-family: var(--font-sans);
-      font-weight: 600;
-      font-size: 0.9375rem;
-      color: var(--charcoal);
-      margin-bottom: 0.75rem;
-      margin-top: 2rem;
-    }
-
-    .fit-heading:first-of-type {
-      margin-top: 0;
-    }
-
-    /* ── CTA ── */
-    .cta {
-      padding: 3.5rem 0;
-      text-align: center;
-    }
-
-    .cta h2 {
-      margin-bottom: 1rem;
-    }
-
-    .cta p {
-      font-size: 1rem;
-      max-width: 480px;
-      margin: 0 auto 2rem;
-    }
-
-    .cta-link {
+    /* Section labels (single source — no § numbers) */
+    .label {
       display: inline-block;
-      font-family: var(--font-sans);
-      font-weight: 600;
-      font-size: 1rem;
-      color: var(--sand-light);
-      background: var(--charcoal);
-      text-decoration: none;
-      padding: 0.875rem 2.25rem;
-      border-radius: 4px;
-      transition: background 0.15s;
-    }
-
-    .cta-link:hover {
-      background: var(--accent);
-    }
-
-    .cta-meta {
-      font-size: 0.8125rem;
-      color: var(--slate-light);
-      font-style: italic;
-      margin-top: 1.25rem;
-    }
-
-    /* ── Footer ── */
-    footer {
-      padding: 2rem 0;
-      border-top: 1px solid var(--rule);
-    }
-
-    .footer-inner {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-    }
-
-    .footer-name {
-      font-size: 0.75rem;
-      letter-spacing: 0.1em;
+      font-family: var(--mono);
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--slate-light);
+      color: var(--blue);
+      margin-bottom: 0;
     }
 
-    .footer-links a {
-      font-size: 0.75rem;
-      color: var(--slate-light);
-      text-decoration: none;
-      transition: color 0.15s;
+    /* ───── Utility bar ───── */
+    .utility {
+      background: var(--paper);
+      border-bottom: 1px solid var(--rule);
+      font-family: var(--mono); font-size: 0.68rem;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--ink-50);
+    }
+    .utility-inner {
+      max-width: 1180px; margin: 0 auto; padding: 10px 40px;
+      display: grid; grid-template-columns: 1fr 1fr 1fr;
+      gap: 16px; align-items: center;
+    }
+    .utility-status { color: var(--blue); }
+    .utility-centre { text-align: center; }
+    .utility-right { text-align: right; }
+    .dot {
+      display: inline-block; width: 7px; height: 7px;
+      border-radius: 50%; background: var(--blue);
+      margin-right: 8px; vertical-align: 1px;
+      box-shadow: 0 0 0 3px rgba(91,111,130,0.22);
     }
 
-    .footer-links a:hover { color: var(--charcoal); }
-
-    /* ── Nav ── */
-    .site-nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: var(--sand);
+    /* ───── Nav ───── */
+    .nav {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(229,222,209,0.94);
+      backdrop-filter: saturate(140%) blur(8px);
+      -webkit-backdrop-filter: saturate(140%) blur(8px);
       border-bottom: 1px solid var(--rule);
     }
-
     .nav-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 64px;
+      max-width: 1180px; margin: 0 auto; padding: 18px 40px;
+      display: flex; align-items: center; justify-content: space-between;
     }
-
     .nav-logo {
-      font-family: var(--font-serif);
-      font-size: 1.125rem;
-      color: var(--charcoal);
-      text-decoration: none;
-      flex-shrink: 0;
+      font-family: var(--serif); font-size: 1.35rem; color: var(--ink);
+      text-decoration: none; letter-spacing: -0.01em;
+      display: inline-flex; align-items: baseline; gap: 12px;
+    }
+    .nav-mark {
+      display: inline-block; width: 26px; height: 26px;
+      background: var(--ink); color: var(--paper);
+      border-radius: 4px;
+      text-align: center; line-height: 26px;
+      font-family: var(--mono); font-size: 11px; font-weight: 500;
+      letter-spacing: 0.04em;
+      transform: translateY(2px);
+    }
+    .nav-links {
+      display: flex; gap: 4px; list-style: none;
+      align-items: center;
+    }
+    .nav-links a {
+      font-family: var(--mono); font-size: 11.5px; font-weight: 400;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--ink-50); text-decoration: none;
+      padding: 8px 12px; border-radius: 2px;
+      transition: color 0.15s, background 0.15s;
+    }
+    .nav-links a:hover { color: var(--ink); background: rgba(31,38,47,0.04); }
+    .nav-links a.is-active { color: var(--blue); }
+    .nav-cta {
+      font-family: var(--sans);
+      font-size: 13px; font-weight: 500;
+      letter-spacing: 0;
+      text-transform: none;
+      color: var(--paper) !important; background: var(--ink);
+      padding: 9px 16px !important; border-radius: 3px;
+      display: inline-flex !important; align-items: center; gap: 8px;
+      transition: background 0.15s;
+      margin-left: 12px;
+    }
+    .nav-cta:hover { background: var(--blue) !important; }
+    .nav-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+    .nav-toggle span { display: block; width: 22px; height: 2px; background: var(--ink); border-radius: 2px; }
+
+    /* ───── Hero ───── */
+    .hero { padding: 0; }
+    .hero-inner {
+      max-width: 1180px; margin: 0 auto;
+      padding: 48px 40px 40px;
+      display: grid; grid-template-columns: 1.05fr 0.95fr;
+      gap: 56px; align-items: end;
+    }
+    .hero-eyebrow {
+      font-family: var(--mono); font-size: 0.72rem;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--blue); margin-bottom: 18px;
+      display: inline-flex; align-items: center; gap: 14px;
+    }
+    .hero-eyebrow::before {
+      content: ''; display: inline-block;
+      width: 36px; height: 1px; background: var(--blue);
+    }
+    .hero h1 {
+      font-size: clamp(2.4rem, 5.6vw, 4.6rem);
+      max-width: 12ch;
+      margin-bottom: 24px;
+    }
+    .hero h1 .accent { color: var(--blue); font-style: italic; font-weight: 400; }
+    .hero-sub {
+      font-size: 1.15rem; line-height: 1.5;
+      color: var(--ink-70);
+      max-width: 30em;
+      margin-bottom: 1rem;
+    }
+    .hero-context {
+      font-size: 0.95rem; line-height: 1.55;
+      color: var(--ink-50);
+      max-width: 30em;
+    }
+    .hero-photo {
+      align-self: stretch;
+      background: var(--paper-deep);
+      background-image: url(assets/jerome.jpg);
+      background-size: cover;
+      background-position: 62% 18%;
+      min-height: 440px;
+      border-radius: 2px;
+      position: relative;
+    }
+    .hero-photo-tag {
+      position: absolute; bottom: 16px; left: 16px;
+      background: rgba(31,38,47,0.85);
+      color: var(--paper);
+      font-family: var(--mono); font-size: 11px;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      padding: 8px 12px; border-radius: 3px;
     }
 
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 2rem;
-      list-style: none;
-      padding: 0;
+    /* ───── Proof strip ───── */
+    .proof {
+      background: var(--paper);
+      border-top: 1px solid var(--rule-strong);
+      border-bottom: 1px solid var(--rule-strong);
+    }
+    .proof-grid {
+      max-width: 1180px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(4, 1fr);
+    }
+    .proof-cell {
+      padding: 28px 28px 30px;
+      border-right: 1px solid var(--rule);
+    }
+    .proof-cell:first-child { padding-left: 40px; }
+    .proof-cell:last-child { border-right: none; padding-right: 40px; }
+    .proof-key {
+      font-family: var(--mono); font-size: 0.7rem;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--ink-50); margin-bottom: 14px;
+    }
+    .proof-num {
+      font-family: var(--serif); font-size: 2.6rem;
+      line-height: 0.95; letter-spacing: -0.02em;
+      color: var(--ink);
+    }
+    .proof-num .accent { color: var(--blue); font-style: italic; }
+    .proof-sub {
+      font-family: var(--mono); font-size: 0.68rem;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--ink-50); margin-top: 12px;
+    }
+
+    /* ───── Section head (label + content) ───── */
+    .section-head {
+      margin-bottom: 28px;
+    }
+    .section-head .label { margin-bottom: 14px; }
+    .section-head h2 { max-width: 34ch; }
+    .section-head:has(.label):not(:has(h2)):not(:has(.section-intro)) {
+      margin-bottom: 12px;
+    }
+    /* Label-only sections (e.g. "What Changes When I Show Up") need less air above */
+    section:has(> .wrap > .section-head:not(:has(h2)):not(:has(.section-intro))) {
+      padding-top: 40px;
+    }
+    .section-intro {
+      font-size: 1.05rem;
+      color: var(--ink-70);
+      max-width: 60ch;
+      margin-bottom: 0;
+    }
+
+    /* ───── Why Now ───── */
+    .why-body { max-width: 64ch; }
+    .why-body p { font-size: 1.05rem; line-height: 1.65; }
+    .why-h3 {
+      font-family: var(--serif);
+      font-size: 1.65rem;
+      line-height: 1.2;
+      margin: 48px 0 24px;
+      color: var(--ink);
+      letter-spacing: -0.01em;
+      max-width: 30ch;
+    }
+
+    .callout {
+      margin: 36px 0;
+      padding: 26px 28px;
+      background: var(--paper-deep);
+      border-left: 3px solid var(--blue);
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 1.65rem;
+      line-height: 1.25;
+      color: var(--ink);
+      letter-spacing: -0.005em;
+    }
+
+    .impact-areas { margin-top: 8px; }
+    .impact-area {
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 24px;
+      padding: 22px 0;
+      border-top: 1px solid var(--rule);
+      max-width: 80ch;
+    }
+    .impact-area:first-child { border-top: none; padding-top: 12px; }
+    .impact-area-key {
+      font-family: var(--mono); font-size: 0.72rem;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--blue); padding-top: 4px;
+    }
+    .impact-area p {
+      font-size: 1rem; line-height: 1.55; color: var(--ink-70);
       margin: 0;
     }
+    .impact-area p strong { color: var(--ink); font-weight: 500; }
 
-    .nav-links a {
-      font-size: 0.9375rem;
-      color: var(--slate);
-      text-decoration: none;
-      transition: color 0.15s;
+    .why-close {
+      margin-top: 40px;
+      max-width: 64ch;
+      font-size: 1.1rem;
+      line-height: 1.5;
+      color: var(--ink);
+      font-family: var(--serif);
+      font-style: italic;
+      letter-spacing: -0.005em;
     }
 
-    .nav-links a:hover { color: var(--charcoal); }
-
-    .nav-cta {
-      font-weight: 600;
-      font-size: 0.875rem;
-      color: var(--sand-light) !important;
-      background: var(--charcoal);
-      padding: 0.5rem 1.25rem;
-      border-radius: 4px;
-      transition: background 0.15s;
+    /* ───── What Changes (outcomes) ───── */
+    .outcomes {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0 56px;
+    }
+    .outcome {
+      padding: 24px 0;
+      border-top: 1px solid var(--rule);
+    }
+    .outcome:first-child, .outcome:nth-child(2) {
+      border-top: none;
+      padding-top: 0;
+    }
+    .outcome h3 {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: 1.55rem;
+      line-height: 1.15;
+      margin-bottom: 10px;
+    }
+    .outcome p {
+      font-size: 0.98rem;
+      line-height: 1.55;
+      max-width: 38em;
     }
 
-    .nav-cta:hover { background: var(--accent) !important; }
-
-    .nav-toggle {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 4px;
+    /* ───── Engagements (paper-deep, subtle lift) ───── */
+    .engagements {
+      background: var(--paper-deep);
     }
 
-    .nav-toggle span {
-      display: block;
-      width: 24px;
-      height: 2px;
-      background: var(--charcoal);
+    .snapshot {
+      margin: 0 0 40px;
+      padding: 22px 28px;
+      background: var(--paper);
+      border: 1px solid var(--rule-strong);
+      border-left: 3px solid var(--blue);
       border-radius: 2px;
-      transition: transform 0.2s, opacity 0.2s;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 24px;
+      align-items: center;
+    }
+    .snapshot-meta {
+      font-family: var(--mono); font-size: 0.7rem;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--blue); margin-bottom: 8px;
+    }
+    .snapshot p {
+      font-size: 1rem; max-width: 50em; margin: 0;
+      color: var(--ink-70);
+    }
+    .snapshot-link {
+      font-family: var(--sans); font-size: 14px; font-weight: 500;
+      color: var(--paper); background: var(--blue);
+      text-decoration: none;
+      padding: 11px 18px; border-radius: 3px;
+      display: inline-flex; align-items: center; gap: 8px;
+      transition: background 0.15s;
+      white-space: nowrap;
+    }
+    .snapshot-link:hover { background: var(--blue-deep); }
+
+    .tier {
+      padding: 36px 0;
+      border-top: 1px solid var(--rule-strong);
+      display: grid;
+      grid-template-columns: 72px 1fr 260px;
+      gap: 36px;
+      align-items: start;
+    }
+    .tier:last-child { padding-bottom: 12px; }
+    .tier-num {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 4rem;
+      line-height: 0.9;
+      color: var(--blue);
+    }
+    .tier-title {
+      font-family: var(--serif);
+      font-size: 2.4rem;
+      line-height: 1.05;
+      color: var(--ink);
+      margin-bottom: 18px;
+      letter-spacing: -0.02em;
+    }
+    .tier-question {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 1.95rem;
+      line-height: 1.15;
+      color: var(--blue);
+      margin: 0 0 12px;
+      letter-spacing: -0.005em;
+    }
+    .tier p { font-size: 0.98rem; line-height: 1.6; max-width: 44em; color: var(--ink-70); }
+    .tier ul {
+      list-style: none; padding: 0; margin-top: 12px;
+    }
+    .tier ul li {
+      font-size: 0.96rem;
+      color: var(--ink-70);
+      padding: 5px 0 5px 18px;
+      position: relative;
+      line-height: 1.5;
+    }
+    .tier ul li::before {
+      content: ''; position: absolute; left: 0; top: 13px;
+      width: 8px; height: 1px; background: var(--blue);
     }
 
-    section, .hero, .cta {
-      scroll-margin-top: 64px;
+    .specs {
+      font-family: var(--mono); font-size: 11.5px;
+      color: var(--ink-70);
+      border-top: 1px solid var(--rule-strong);
+      padding-top: 4px;
+    }
+    .spec-row {
+      display: flex; justify-content: space-between; gap: 12px;
+      padding: 9px 0;
+      border-bottom: 1px solid var(--rule);
+      letter-spacing: 0.04em;
+    }
+    .spec-row:last-child { border-bottom: none; }
+    .spec-k { color: var(--ink-50); letter-spacing: 0.12em; text-transform: uppercase; }
+    .spec-v { color: var(--ink); text-align: right; }
+    .spec-v.accent { color: var(--blue); }
+
+    .tier-note {
+      grid-column: 2 / 3;
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 1rem;
+      color: var(--ink-50);
+      margin-top: 14px;
+      max-width: 44em;
     }
 
-    /* ── Responsive ── */
-    @media (max-width: 700px) {
+    /* ───── About ───── */
+    .about-body { max-width: 64ch; }
+    .about-body p {
+      font-size: 1.02rem;
+      line-height: 1.65;
+    }
+    .about-intro {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 1.55rem;
+      line-height: 1.3;
+      color: var(--ink);
+      margin-bottom: 36px;
+      white-space: nowrap;
+    }
+    .believe-list {
+      list-style: none; padding: 0;
+      max-width: 64ch;
+      margin-top: 8px;
+    }
+    .believe-list li {
+      font-size: 1.02rem;
+      color: var(--ink-70);
+      padding: 14px 0 14px 24px;
+      position: relative;
+      line-height: 1.5;
+      border-top: 1px solid var(--rule);
+    }
+    .believe-list li:first-child { border-top: none; }
+    .believe-list li::before {
+      content: ''; position: absolute; left: 0; top: 24px;
+      width: 12px; height: 1px; background: var(--blue);
+    }
+    .believe-head { margin-top: 56px; }
+
+    /* ───── Fit ───── */
+    .fit-cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+    }
+    .fit-col h3 {
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--rule);
+    }
+    .fit-col--yes h3 { color: var(--blue); }
+    .fit-col--no h3 { color: var(--ink-50); }
+    .fit-list { list-style: none; padding: 0; }
+    .fit-list li {
+      padding: 12px 0 12px 24px;
+      font-size: 0.98rem;
+      line-height: 1.5;
+      color: var(--ink-70);
+      position: relative;
+      border-bottom: 1px solid var(--rule);
+    }
+    .fit-list li::before {
+      content: '+';
+      position: absolute; left: 0; top: 12px;
+      font-family: var(--mono);
+      font-size: 0.9rem;
+      color: var(--blue);
+    }
+    .fit-list--no li::before { content: '−'; color: var(--ink-30); }
+
+    /* ───── CTA ───── */
+    .cta {
+      background: var(--paper-deep);
+      text-align: center;
+      padding: 96px 0 100px;
+    }
+    .cta h2 {
+      font-size: clamp(2.4rem, 5vw, 4.2rem);
+      max-width: 16ch;
+      margin: 0 auto 18px;
+      line-height: 1;
+    }
+    .cta h2 .accent { color: var(--blue); font-style: italic; }
+    .cta p {
+      font-size: 1.1rem;
+      max-width: 44ch;
+      margin: 0 auto 32px;
+    }
+    .cta-link {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-family: var(--sans); font-weight: 500; font-size: 1rem;
+      color: var(--paper); background: var(--ink);
+      text-decoration: none;
+      padding: 14px 28px; border-radius: 3px;
+      transition: background 0.15s, transform 0.15s;
+    }
+    .cta-link:hover { background: var(--blue); }
+    .cta-meta {
+      font-family: var(--mono); font-size: 0.72rem;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--ink-50);
+      margin-top: 32px;
+    }
+    .cta-meta-line { display: block; margin-top: 6px; }
+
+    /* ───── Footer ───── */
+    footer {
+      background: var(--ink);
+      color: rgba(229,222,209,0.6);
+      padding: 32px 0 28px;
+      font-size: 0.85rem;
+    }
+    .footer-inner {
+      max-width: 1180px; margin: 0 auto; padding: 0 40px;
+      display: flex; justify-content: space-between; align-items: center;
+      gap: 16px; flex-wrap: wrap;
+    }
+    .footer-name {
+      font-family: var(--mono); font-size: 0.72rem;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: rgba(229,222,209,0.85);
+    }
+    .footer-links { display: flex; gap: 20px; }
+    .footer-links a {
+      font-family: var(--mono); font-size: 0.7rem;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: rgba(229,222,209,0.55);
+      text-decoration: none;
+    }
+    .footer-links a:hover { color: var(--paper); }
+
+    section, .hero, .cta { scroll-margin-top: 80px; }
+
+    /* ───── Responsive ───── */
+    @media (max-width: 960px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 32px; padding: 40px 28px 36px; }
+      .hero-photo { min-height: 340px; }
+      .wrap, .wrap--narrow, .utility-inner, .nav-inner, .proof-grid, .footer-inner { padding-left: 28px; padding-right: 28px; }
+      .proof-grid { grid-template-columns: 1fr 1fr; }
+      .proof-cell { border-bottom: 1px solid var(--rule); }
+      .proof-cell:first-child, .proof-cell:nth-child(3) { padding-left: 28px; }
+      .proof-cell:nth-child(2), .proof-cell:nth-child(4) { border-right: none; padding-right: 28px; }
+      .proof-cell:nth-child(3), .proof-cell:nth-child(4) { border-bottom: none; }
+      .outcomes, .fit-cols { grid-template-columns: 1fr; gap: 0; }
+      .impact-area { grid-template-columns: 1fr; gap: 6px; }
+      .tier { grid-template-columns: 1fr; gap: 18px; }
+      .tier-num { font-size: 2.8rem; }
+      .snapshot { grid-template-columns: 1fr; }
+      section { padding: 64px 0; }
+    }
+
+    @media (max-width: 820px) {
+      .utility-inner { grid-template-columns: 1fr; gap: 4px; text-align: left; }
+      .utility-centre, .utility-right { text-align: left; }
       .nav-toggle { display: flex; }
-
       .nav-links {
         display: none;
-        position: absolute;
-        top: 64px;
-        left: 0;
-        right: 0;
-        background: var(--sand);
+        position: absolute; top: 100%; left: 0; right: 0;
+        background: var(--paper);
         border-bottom: 1px solid var(--rule);
-        flex-direction: column;
-        align-items: stretch;
-        gap: 0;
-        padding: 0.5rem 1.5rem 1rem;
+        flex-direction: column; gap: 0;
+        padding: 8px 28px 16px;
       }
-
-      .nav-links.is-open { display: flex; }
-
+      .nav-links.open { display: flex; }
       .nav-links li {
-        padding: 0.6rem 0;
+        padding: 6px 0;
         border-bottom: 1px solid var(--rule);
       }
-
-      .nav-links li:last-child {
-        border-bottom: none;
-        padding-top: 1rem;
-      }
-
-      .nav-cta {
-        display: block;
-        text-align: center;
-      }
+      .nav-links li:last-child { border-bottom: none; padding-top: 12px; }
+      .nav-cta { display: block; text-align: center; margin-left: 0; }
     }
 
-    @media (max-width: 700px) {
-      .hero-intro {
-        flex-direction: column;
-        text-align: center;
-        gap: 1.5rem;
-      }
-
-      .hero-photo {
-        width: 180px;
-        height: 180px;
-      }
-
-      .proof-points {
-        flex-direction: column;
-        gap: 0.5rem;
-      }
-
-      section {
-        padding: 2.5rem 0;
-      }
-
-      .hero {
-        padding: 2rem 0 2.5rem;
-      }
+    @media (max-width: 720px) {
+      .about-intro { white-space: normal; font-size: 1.3rem; }
     }
 
-    @media (max-width: 480px) {
-      body { font-size: 15px; }
-      .container, .container--wide { padding: 0 1.25rem; }
-
-      .tier {
-        padding: 1.5rem;
-      }
+    @media (max-width: 600px) {
+      .callout, .why-h3 { font-size: 1.35rem; padding: 20px 18px; }
+      .why-h3 { padding: 0; }
+      h1 { font-size: clamp(2rem, 9vw, 2.8rem); }
+      .proof-grid { grid-template-columns: 1fr; }
+      .proof-cell { padding-left: 28px !important; padding-right: 28px !important; border-right: none !important; }
+      .proof-cell:last-child { padding-bottom: 28px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- ════ NAV ════ -->
-  <nav class="site-nav">
-    <div class="container--wide nav-inner">
-      <a class="nav-logo" href="#top">Jérôme Basdevant</a>
+  <!-- ═══════════ UTILITY BAR ═══════════ -->
+  <div class="utility">
+    <div class="utility-inner">
+      <div><span class="dot"></span><span class="utility-status">Taking engagements · Q3 2026</span></div>
+      <div class="utility-centre">jeromebasdevant.com</div>
+      <div class="utility-right">Based in Spain · FR · EN · ES</div>
+    </div>
+  </div>
+
+  <!-- ═══════════ NAV ═══════════ -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a class="nav-logo" href="#top">
+        <span class="nav-mark">JB</span>
+        <span>Jérôme Basdevant</span>
+      </a>
       <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
         <span></span><span></span><span></span>
       </button>
       <ul class="nav-links" id="nav-links">
-        <li><a href="#top">Home</a></li>
-        <li><a href="#why-now">Why Now</a></li>
-        <li><a href="#engagements">Engagements</a></li>
+        <li><a href="#why-now" data-section="why-now">Why Now</a></li>
+        <li><a href="#engagements" data-section="engagements">Engagements</a></li>
         <li><a href="/snapshot">Snapshot</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a class="nav-cta" href="https://cal.eu/jerome-basdevant/30min" target="_blank" rel="noopener">Book a call</a></li>
+        <li><a href="#about" data-section="about">About</a></li>
+        <li><a class="nav-cta" href="https://cal.eu/jerome-basdevant/30min" target="_blank" rel="noopener">Book a call <span aria-hidden="true">↗</span></a></li>
       </ul>
     </div>
   </nav>
 
-  <!-- ════ HERO ════ -->
+  <!-- ═══════════ HERO ═══════════ -->
   <header class="hero" id="top">
-    <div class="container">
-      <div class="hero-intro">
-        <img class="hero-photo" src="assets/jerome-basdevant_lg_2000px_01a.jpg" alt="Jérôme Basdevant — professional headshot, blue-grey blazer, arms crossed" width="2000" height="1333" />
-        <div class="hero-intro-text">
-          <p class="hero-eyebrow">AI Leadership Advisory</p>
-          <p class="hero-name">Jérôme Basdevant</p>
-          <p class="hero-title">AI leadership partner for teams that know they need to move but aren't sure where to start.</p>
-        </div>
+    <div class="hero-inner">
+      <div>
+        <div class="hero-eyebrow">AI Leadership Advisory · Jérôme Basdevant</div>
+        <h1>AI is already inside your company. <span class="accent">The question is who's leading it.</span></h1>
+        <p class="hero-sub">I help leadership teams figure out what AI actually changes about their business and then make the shift real.</p>
+        <p class="hero-context">25 years building, scaling, and reinventing technology products across four countries.</p>
       </div>
-
-      <h1>AI is already inside your company. The question is who's leading it.</h1>
-      <p class="hero-sub">I help leadership teams figure out what AI actually changes about their business and then make the shift real.</p>
-      <p class="hero-context">25 years building, scaling, and reinventing technology products across four countries.</p>
-
-      <div class="proof-points">
-        <div class="proof-item">
-          <span class="proof-num">25 years</span>
-          <span class="proof-label">building products &amp; teams</span>
-        </div>
-        <div class="proof-item">
-          <span class="proof-num">2 SaaS platforms</span>
-          <span class="proof-label">built from scratch</span>
-        </div>
-        <div class="proof-item">
-          <span class="proof-num">0 &rarr; 50</span>
-          <span class="proof-label">product &amp; engineers scaled</span>
-        </div>
-        <div class="proof-item">
-          <span class="proof-num">3 funding rounds</span>
-          <span class="proof-label">Series A, B &amp; C</span>
-        </div>
-        <div class="proof-item">
-          <span class="proof-num">3 languages</span>
-          <span class="proof-label">FR &middot; EN &middot; ES</span>
-        </div>
-      </div>
-
-      <div class="hero-cta">
-        <a class="cta-link" href="https://cal.eu/jerome-basdevant/30min" target="_blank" rel="noopener">Book a call</a>
+      <div class="hero-photo" role="img" aria-label="Jérôme Basdevant — professional headshot, blue-grey blazer">
+        <span class="hero-photo-tag">JB · Spain · 2026</span>
       </div>
     </div>
   </header>
 
-  <hr class="section-rule" />
+  <!-- ═══════════ PROOF ═══════════ -->
+  <div class="proof">
+    <div class="proof-grid">
+      <div class="proof-cell">
+        <div class="proof-key">Tenure</div>
+        <div class="proof-num">25 <span style="font-size:1rem; color:var(--ink-50); font-family:var(--mono); font-style:normal; letter-spacing:0.1em;">YRS</span></div>
+        <div class="proof-sub">Building products &amp; teams</div>
+      </div>
+      <div class="proof-cell">
+        <div class="proof-key">SaaS built</div>
+        <div class="proof-num">02</div>
+        <div class="proof-sub">Platforms from scratch</div>
+      </div>
+      <div class="proof-cell">
+        <div class="proof-key">Team scaled</div>
+        <div class="proof-num"><span class="accent">0 → 50</span></div>
+        <div class="proof-sub">Product &amp; engineers</div>
+      </div>
+      <div class="proof-cell">
+        <div class="proof-key">Rounds raised</div>
+        <div class="proof-num">A · B · C</div>
+        <div class="proof-sub">Series, all three</div>
+      </div>
+    </div>
+  </div>
 
-  <!-- ════ WHY NOW ════ -->
+  <!-- ═══════════ WHY NOW ═══════════ -->
   <section id="why-now">
-    <div class="container">
-      <p class="section-label">Why Now</p>
-      <h2>The tools are here. The leadership isn't.</h2>
-
-      <p>Your team is already using AI. Engineers prompt models. Someone built a prototype over a weekend. There's a pilot somewhere. Maybe more.</p>
-      <p>But nobody's answered the harder questions. Which processes should you automate and which should you rethink entirely? Where does AI create genuine competitive advantage? Where is it just faster busywork? What should you stop investing in? And who in your organization actually owns this?</p>
-
-      <div class="callout">
-        Who in your organization would know if the AI output was wrong?
+    <div class="wrap">
+      <div class="section-head">
+        <span class="label">Why Now</span>
+        <h2>The tools are here. <i>The leadership isn't.</i></h2>
       </div>
 
-      <p>If nobody can answer that clearly, you don't have an AI strategy. You have a collection of experiments.</p>
+      <div class="why-body">
+        <p>Your team is already using AI. Engineers prompt models. Someone built a prototype over a weekend. There's a pilot somewhere. Maybe more.</p>
+        <p>But nobody's answered the harder questions. Which processes should you automate and which should you rethink entirely? Where does AI create genuine competitive advantage? Where is it just faster busywork? What should you stop investing in? And who in your organization actually owns this?</p>
+        <div class="callout">"Who in your organization would know if the AI output was wrong?"</div>
+        <p>If nobody can answer that clearly, you don't have an AI strategy. You have a collection of experiments.</p>
 
-      <h3>This is happening everywhere, not just in the software.</h3>
+        <h3 class="why-h3">This is happening everywhere, not just in the software.</h3>
 
-      <div class="impact-area">
-        <p><strong>On go-to-market,</strong> AI is eating search, automating sales end to end, and collapsing finance workflows into agents. Danfoss automated the majority of its transaction decisions using agentic AI, cutting customer response time from 42 hours to near-instant.</p>
-      </div>
-      <div class="impact-area">
-        <p><strong>On product,</strong> agents and LLMs are collapsing SaaS tool stacks. Your users won't click through five screens when an agent handles it in a sentence. The question becomes how much of it still needs to exist.</p>
-      </div>
-      <div class="impact-area">
-        <p><strong>On production and operations,</strong> AI is replacing the manual inspector, the human scheduler, the break-fix maintenance team. All of that in production, across industrials and manufacturing, at scale. The question is how far up the decision chain it goes next.</p>
-      </div>
+        <div class="impact-areas">
+          <div class="impact-area">
+            <div class="impact-area-key">Go-to-market</div>
+            <p>AI is eating search, automating sales end to end, and collapsing finance workflows into agents. <strong>Danfoss</strong> automated the majority of its transaction decisions using agentic AI, cutting customer response time from 42 hours to near-instant.</p>
+          </div>
+          <div class="impact-area">
+            <div class="impact-area-key">Product</div>
+            <p>Agents and LLMs are collapsing SaaS tool stacks. Your users won't click through five screens when an agent handles it in a sentence. The question becomes how much of it still needs to exist.</p>
+          </div>
+          <div class="impact-area">
+            <div class="impact-area-key">Operations</div>
+            <p>AI is replacing the manual inspector, the human scheduler, the break-fix maintenance team. All of that in production, across industrials and manufacturing, at scale. The question is how far up the decision chain it goes next.</p>
+          </div>
+        </div>
 
-      <p>These questions don't live in engineering. They live in leadership. And most leadership teams don't have anyone who can hold the technology, the strategy, and the organizational change in one conversation.</p>
+        <p class="why-close">These questions don't live in engineering. They live in leadership. And most leadership teams don't have anyone who can hold the technology, the strategy, and the organisational change in one conversation.</p>
+      </div>
     </div>
   </section>
 
-  <hr class="section-rule" />
-
-  <!-- ════ WHAT CHANGES ════ -->
+  <!-- ═══════════ WHAT CHANGES ═══════════ -->
   <section>
-    <div class="container">
-      <p class="section-label">What Changes When I Show Up</p>
+    <div class="wrap">
+      <div class="section-head">
+        <span class="label">What Changes When I Show Up</span>
+      </div>
 
-      <div class="outcome">
-        <h3>Your roadmap gets honest.</h3>
-        <p>Every roadmap has the wrong things on it. A meaningful share of what's in progress is either the wrong bet or the right bet at the wrong time. The work is finding which is which and building the discipline to cut, not just re-prioritise.</p>
-      </div>
-      <div class="outcome">
-        <h3>Experiments move faster than planning cycles.</h3>
-        <p>When AI handles the scaffolding, your team focuses on the hard problems. The cycle from "what if" to "here's the data" gets short enough that bad ideas die before they become expensive commitments.</p>
-      </div>
-      <div class="outcome">
-        <h3>The gap between product and engineering closes.</h3>
-        <p>The friction usually is no longer the technology but the distance between the people deciding what to build and the people building it. I close that gap by making sure the people building understand why. Everything downstream improves.</p>
-      </div>
-      <div class="outcome">
-        <h3>Your leaders level up.</h3>
-        <p>The CTO stops firefighting. The founder steps out of the weeds. Key people grow into roles that didn't exist six months ago. I build capability that stays after I leave.</p>
-      </div>
-      <div class="outcome">
-        <h3>AI gets governed, not just deployed.</h3>
-        <p>Clear rules on what AI touches, what it doesn't, and who's accountable when the output is wrong. Including where you stand under the EU AI Act. Your clients and partners are already asking those questions. It's time to take it seriously.</p>
-      </div>
-      <div class="outcome">
-        <h3>Hard choices get made.</h3>
-        <p>Most AI programs generate a lot of activity, pilots, workshops, strategy decks without generating outcomes. I help you get from conversation to commitment: what to build, what to stop, who owns what. If it doesn't change how your team works, it wasn't strategy.</p>
+      <div class="outcomes">
+        <div class="outcome">
+          <h3>Your roadmap gets honest.</h3>
+          <p>Every roadmap has the wrong things on it. A meaningful share of what's in progress is either the wrong bet or the right bet at the wrong time. The work is finding which is which and building the discipline to cut, not just re-prioritise.</p>
+        </div>
+        <div class="outcome">
+          <h3>Experiments move faster than planning cycles.</h3>
+          <p>When AI handles the scaffolding, your team focuses on the hard problems. The cycle from "what if" to "here's the data" gets short enough that bad ideas die before they become expensive commitments.</p>
+        </div>
+        <div class="outcome">
+          <h3>The gap between product and engineering closes.</h3>
+          <p>The friction usually is no longer the technology but the distance between the people deciding what to build and the people building it. I close that gap by making sure the people building understand why. Everything downstream improves.</p>
+        </div>
+        <div class="outcome">
+          <h3>Your leaders level up.</h3>
+          <p>The CTO stops firefighting. The founder steps out of the weeds. Key people grow into roles that didn't exist six months ago. I build capability that stays after I leave.</p>
+        </div>
+        <div class="outcome">
+          <h3>AI gets governed, not just deployed.</h3>
+          <p>Clear rules on what AI touches, what it doesn't, and who's accountable when the output is wrong. Including where you stand under the EU AI Act. Your clients and partners are already asking those questions. It's time to take it seriously.</p>
+        </div>
+        <div class="outcome">
+          <h3>Hard choices get made.</h3>
+          <p>Most AI programs generate a lot of activity, pilots, workshops, strategy decks without generating outcomes. I help you get from conversation to commitment: what to build, what to stop, who owns what. If it doesn't change how your team works, it wasn't strategy.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <hr class="section-rule" />
-
-  <!-- ════ ENGAGEMENTS ════ -->
-  <section id="engagements">
-    <div class="container">
-      <p class="section-label">Engagements</p>
-      <p>Every engagement builds your internal capability.</p>
-
-      <div class="snapshot-entry">
-        <p class="tier-eyebrow">Start Here</p>
-        <p><strong>AI Leadership Snapshot</strong> — 10 minutes, free. A 1-page read of where you stand. If we both see something worth digging into, the full AI Readiness Diagnostic goes deeper over 2–4 weeks.</p>
-        <a href="/snapshot">Take the Snapshot →</a>
+  <!-- ═══════════ ENGAGEMENTS (paper-deep) ═══════════ -->
+  <section class="engagements" id="engagements">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="label">Engagements</span>
+        <p class="section-intro">Every engagement builds your internal capability.</p>
       </div>
 
-      <div class="tiers">
-        <!-- Tier 1 -->
-        <article class="tier">
-          <p class="tier-eyebrow">Diagnostic</p>
-          <h3>"Where do we actually stand?"</h3>
-          <p class="tier-duration">AI Readiness Diagnostic — 2–4 weeks</p>
+      <div class="snapshot">
+        <div>
+          <div class="snapshot-meta">Start here · 10 minutes · Free</div>
+          <p><strong>AI Leadership Snapshot.</strong> A 1-page read of where you stand. If we both see something worth digging into, the full AI Readiness Diagnostic goes deeper over 2–4 weeks.</p>
+        </div>
+        <a class="snapshot-link" href="/snapshot">Take the Snapshot <span aria-hidden="true">→</span></a>
+      </div>
+
+      <article class="tier">
+        <div class="tier-num">I.</div>
+        <div>
+          <p class="tier-question">Where do we actually stand?</p>
+          <h3 class="tier-title">Diagnostic · AI Readiness</h3>
           <p>Your team has opinions. Your board has questions. Nobody has the same picture.</p>
           <ul>
             <li>Where AI creates real advantage in your specific business</li>
@@ -860,32 +812,38 @@
             <li>Whether your organization is actually ready — skills, data, processes, governance</li>
             <li>Honest assessment of risk: what happens if you do nothing vs. what happens if you move wrong</li>
           </ul>
-          <div class="tier-result">
-            <p class="tier-result-label">What you get</p>
-            <p>A clear, shared picture. No jargon. Here's where you stand, here's what's at stake, here's where to focus first.</p>
-          </div>
-        </article>
+        </div>
+        <div class="specs">
+          <div class="spec-row"><span class="spec-k">Format</span><span class="spec-v">Diagnostic study</span></div>
+          <div class="spec-row"><span class="spec-k">Duration</span><span class="spec-v accent">2–4 weeks</span></div>
+          <div class="spec-row"><span class="spec-k">Output</span><span class="spec-v">Shared picture</span></div>
+          <div class="spec-row"><span class="spec-k">Audience</span><span class="spec-v">Leadership team</span></div>
+        </div>
+      </article>
 
-        <!-- Tier 2 -->
-        <article class="tier">
-          <p class="tier-eyebrow">Strategy</p>
-          <h3>"What do we actually do?"</h3>
-          <p class="tier-duration">Strategy &amp; Hard Choices — 2–4 weeks</p>
+      <article class="tier">
+        <div class="tier-num">II.</div>
+        <div>
+          <p class="tier-question">What do we actually do?</p>
+          <h3 class="tier-title">Strategy &amp; Hard Choices</h3>
           <p>You know the landscape is shifting. Now you need to decide and bring the team along.</p>
           <p>Starts with a <strong>facilitated AI Strategy Workshop</strong> — a card deck-based session where your leadership team builds a shared vocabulary, maps opportunities to your actual business, and confronts forced choices: build vs. buy, automate vs. augment, invest vs. let go. The workshop surfaces the real disagreements and assumptions that would otherwise stay hidden until they become expensive.</p>
           <p>Then we translate those decisions into a prioritized plan: what to build, what to stop, and in what order. Not a 12-month roadmap, those are fiction in the age of GenAI. A 90-day action plan with clear ownership and an operating model to move forward.</p>
-          <div class="tier-result">
-            <p class="tier-result-label">What you get</p>
-            <p>Alignment that sticks. A plan your team actually believes in because they built it, with real decisions behind it, not wishful thinking.</p>
-          </div>
-          <p class="tier-note">The AI Strategy Workshop can also run as a standalone engagement, a natural entry point, and a way to see how I work.</p>
-        </article>
+        </div>
+        <div class="specs">
+          <div class="spec-row"><span class="spec-k">Format</span><span class="spec-v">Workshop + plan</span></div>
+          <div class="spec-row"><span class="spec-k">Duration</span><span class="spec-v accent">2–4 weeks</span></div>
+          <div class="spec-row"><span class="spec-k">Output</span><span class="spec-v">90-day plan</span></div>
+          <div class="spec-row"><span class="spec-k">Audience</span><span class="spec-v">Leadership team</span></div>
+        </div>
+        <p class="tier-note">The AI Strategy Workshop can also run as a standalone engagement, a natural entry point, and a way to see how I work.</p>
+      </article>
 
-        <!-- Tier 3 -->
-        <article class="tier">
-          <p class="tier-eyebrow">Fractional Chief AI Officer (CAIO)</p>
-          <h3>"Help us actually change."</h3>
-          <p class="tier-duration">Fractional CAIO — 3–6 months</p>
+      <article class="tier">
+        <div class="tier-num">III.</div>
+        <div>
+          <p class="tier-question">Help us actually change.</p>
+          <h3 class="tier-title">Fractional Chief AI Officer (CAIO)</h3>
           <p>You have the strategy. Now the work starts.</p>
           <ul>
             <li>Embedded with the team 1–3 days/week</li>
@@ -893,108 +851,109 @@
             <li>Redesigning workflows, roles, and decision rights around AI</li>
             <li>Regular checkpoints with leadership, course-correcting, not just reporting</li>
           </ul>
-          <div class="tier-result">
-            <p class="tier-result-label">What you get</p>
-            <p>Actual change. A team that builds differently, decides faster, and doesn't need me to keep going.</p>
-          </div>
-        </article>
-      </div>
+        </div>
+        <div class="specs">
+          <div class="spec-row"><span class="spec-k">Format</span><span class="spec-v">Embedded role</span></div>
+          <div class="spec-row"><span class="spec-k">Duration</span><span class="spec-v accent">3–6 months</span></div>
+          <div class="spec-row"><span class="spec-k">Cadence</span><span class="spec-v">1–3 days/week</span></div>
+          <div class="spec-row"><span class="spec-k">Audience</span><span class="spec-v">CEO, CTO, product</span></div>
+        </div>
+      </article>
     </div>
   </section>
 
-  <hr class="section-rule" />
-
-  <!-- ════ ABOUT ════ -->
+  <!-- ═══════════ ABOUT ═══════════ -->
   <section id="about">
-    <div class="container">
-      <p class="section-label">About</p>
-
-      <p>Based in Spain, working across Europe in French, English, and Spanish.</p>
-
-      <h2>Where I sit.</h2>
-
-      <p>I work across technology, product, and organisational change. Years as CTO inside companies navigating platform shifts and eventually a full generative AI transition. Building, breaking things, making calls that cost money when they were wrong. Then entering from outside at other companies to diagnose and deliver.</p>
-      <p>That practitioner background is what lets me hold the technology conversation and the strategy conversation in the same room.</p>
-      <p>The conversation I come back to most is the "what to stop" conversation. Recommending additions is easy. Knowing what to kill, and making the case for it, is where the real work is.</p>
-      
-      <p>Twelve years building Datamaran from a founding idea to an AI-native platform serving enterprise clients globally. Co-founder and CTO. Scaled product and engineering from 0 to 50. Raised Series A, B, and C. Patent holder on the core AI extraction engine.</p>
-      <p>That twelve-year run included navigating a full generative AI transition from inside the company. I ran that process myself: which parts of a decade-old product does a capability shift make obsolete? Which become more valuable? I set the strategy, built the agentic AI pod, and redesigned how the team works.</p>
-      <p>Before Datamaran, I spent several years at ZS Associates in New York, building a SaaS analytics platform for the life sciences industry as an intrapreneur inside a large firm.</p>
-      <p>For the past six years, alongside the operational work, I have been mentoring and coaching engineers, product leads, and founders at Audencia, Plato, and All Tech Is Human. Giving back is not something I schedule. It is a consistent practice.</p>
-
-      <p class="section-label sub-label">What I believe</p>
-      <ul>
-        <li>Trust people with ambitious problems before you have verified they are ready.</li>
-        <li>Outcomes over technical elegance, every time.</li>
-        <li>Build for now. The future will be different from the plan.</li>
-        <li>Lead through synthesis, not authority.</li>
-      </ul>
-    </div>
-  </section>
-
-  <hr class="section-rule" />
-
-  <!-- ════ FIT ════ -->
-  <section>
-    <div class="container">
-      <p class="section-label">Fit</p>
-      <h2>Where I make the biggest difference.</h2>
-
-      <p class="fit-heading">Great fit</p>
-      <ul class="fit-list">
-        <li>Software and product companies whose offering is being reshaped by AI agents</li>
-        <li>Deep tech and industrial companies where AI transforms R&amp;D, quality, or operations</li>
-        <li>Companies (roughly 15–200 people) that know AI matters but haven't figured out how to lead the shift</li>
-        <li>Leadership teams that want a real challenge, not validation</li>
-        <li>Founders and CEOs who believe engineers should understand the business, not just the backlog</li>
-      </ul>
-
-      <p class="fit-heading">Not the right fit</p>
-      <ul class="fit-list fit-list--not">
-        <li>If you want someone to impose process from the top down. I build from within.</li>
-        <li>If you need a hands-on engineer to write your code. I lead the people who do.</li>
-        <li>If you're looking for a training provider. I build capability through the work, not through courses.</li>
-      </ul>
-    </div>
-  </section>
-
-  <hr class="section-rule" />
-
-  <!-- ════ LET'S TALK ════ -->
-  <section class="cta" id="contact">
-    <div class="container">
-      <h2>Let's Talk</h2>
-      <p>If AI is already changing how your company works and nobody owns the answer yet, I'd like to hear about it.</p>
-      <a class="cta-link" href="https://cal.eu/jerome-basdevant/30min" target="_blank" rel="noopener">Book a call</a>
-      <p class="cta-meta">English &middot; French &middot; Spanish — native fluency in all three.<br>Based in Spain &middot; Working across Europe</p>
-    </div>
-  </section>
-
-  <!-- ════ FOOTER ════ -->
-  <footer>
-    <div class="container">
-      <div class="footer-inner">
-        <span class="footer-name">Jérôme Basdevant</span>
-        <nav class="footer-links">
-          <a href="https://www.linkedin.com/in/jeromebasdevant/" target="_blank" rel="noopener">LinkedIn</a>
-        </nav>
+    <div class="wrap">
+      <div class="section-head">
+        <span class="label">About</span>
       </div>
+
+      <div class="about-body">
+        <p class="about-intro">Based in Spain, working across Europe in French, English, and Spanish.</p>
+
+        <p>I work across technology, product, and organisational change. Years as CTO inside companies navigating platform shifts and eventually a full generative AI transition. Building, breaking things, making calls that cost money when they were wrong. Then entering from outside at other companies to diagnose and deliver.</p>
+        <p>That practitioner background is what lets me hold the technology conversation and the strategy conversation in the same room.</p>
+        <p>The conversation I come back to most is the <i>"what to stop"</i> conversation. Recommending additions is easy. Knowing what to kill, and making the case for it, is where the real work is.</p>
+
+        <p>Twelve years building Datamaran from a founding idea to an AI-native platform serving enterprise clients globally. Co-founder and CTO. Scaled product and engineering from 0 to 50. Raised Series A, B, and C. Patent holder on the core AI extraction engine.</p>
+        <p>That twelve-year run included navigating a full generative AI transition from inside the company. I ran that process myself: which parts of a decade-old product does a capability shift make obsolete? Which become more valuable? I set the strategy, built the agentic AI pod, and redesigned how the team works.</p>
+        <p>Before Datamaran, I spent several years at ZS Associates in New York, building a SaaS analytics platform for the life sciences industry as an intrapreneur inside a large firm.</p>
+        <p>For the past six years, alongside the operational work, I have been mentoring and coaching engineers, product leads, and founders at Audencia, Plato, and All Tech Is Human. Giving back is not something I schedule. It is a consistent practice.</p>
+      </div>
+
+      <div class="believe-head">
+        <span class="label">What I believe</span>
+        <ul class="believe-list">
+          <li>Trust people with ambitious problems before you have verified they are ready.</li>
+          <li>Outcomes over technical elegance, every time.</li>
+          <li>Build for now. The future will be different from the plan.</li>
+          <li>Lead through synthesis, not authority.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ CTA ═══════════ -->
+  <section class="cta" id="contact">
+    <div class="wrap--narrow">
+      <h2>Let's <span class="accent">talk.</span></h2>
+      <p>If AI is already changing how your company works and nobody owns the answer yet, I'd like to hear about it.</p>
+      <a class="cta-link" href="https://cal.eu/jerome-basdevant/30min" target="_blank" rel="noopener">Book a call <span aria-hidden="true">↗</span></a>
+      <div class="cta-meta">
+        <span>English · French · Spanish — native fluency in all three</span>
+        <span class="cta-meta-line">Based in Spain · Working across Europe</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ FOOTER ═══════════ -->
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-name">Jérôme Basdevant · MMXXVI</span>
+      <nav class="footer-links">
+        <a href="https://www.linkedin.com/in/jeromebasdevant/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="/cdn-cgi/l/email-protection#d9b3bcabb6b4bc99adabbcaab5b5acb4f7bab6b4">Email</a>
+        <a href="/snapshot">Snapshot</a>
+      </nav>
     </div>
   </footer>
 
-  <script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     const toggle = document.querySelector('.nav-toggle');
     const links = document.getElementById('nav-links');
     toggle.addEventListener('click', () => {
-      const open = links.classList.toggle('is-open');
+      const open = links.classList.toggle('open');
       toggle.setAttribute('aria-expanded', open);
     });
     links.querySelectorAll('a').forEach(a => {
       a.addEventListener('click', () => {
-        links.classList.remove('is-open');
+        links.classList.remove('open');
         toggle.setAttribute('aria-expanded', 'false');
       });
     });
+
+    // Active section scroll-spy
+    const navLinks = links.querySelectorAll('a[data-section]');
+    const sectionMap = new Map();
+    navLinks.forEach(a => {
+      const id = a.dataset.section;
+      const el = document.getElementById(id);
+      if (el) sectionMap.set(id, { link: a, el });
+    });
+    const setActive = (id) => {
+      navLinks.forEach(a => a.classList.toggle('is-active', a.dataset.section === id));
+    };
+    const observer = new IntersectionObserver((entries) => {
+      const visible = entries
+        .filter(e => e.isIntersecting)
+        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+      if (visible) {
+        const id = visible.target.id;
+        if (sectionMap.has(id)) setActive(id);
+      }
+    }, { rootMargin: '-30% 0px -55% 0px', threshold: [0, 0.25, 0.5, 0.75, 1] });
+    sectionMap.forEach(({ el }) => observer.observe(el));
   </script>
 </body>
 </html>
