@@ -387,6 +387,31 @@
       font-size: 0.9375rem;
     }
 
+    .record-entry ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 0.25rem;
+    }
+
+    .record-entry ul li {
+      font-size: 0.9375rem;
+      color: var(--slate);
+      padding: 0.3rem 0;
+      padding-left: 1.25rem;
+      position: relative;
+    }
+
+    .record-entry ul li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.7rem;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
     /* ── Why me ── */
 
     /* ── Principles ── */
@@ -895,8 +920,12 @@
       </div>
 
       <div class="record-entry">
-        <h3>Teaching &amp; Mentoring</h3>
-        <p>Lecturer in AI and emerging technologies at Audencia's Chief Value Officer executive programme. Engineering leadership mentor at Plato. Responsible tech mentor at All Tech Is Human. Because every engagement should build capability, not dependency.</p>
+        <h3>Teaching</h3>
+        <ul>
+          <li>Audencia — Lecturer, AI and emerging technologies (Chief Value Officer executive programme)</li>
+          <li>Plato — Engineering leadership mentor</li>
+          <li>All Tech Is Human — Responsible tech mentor</li>
+        </ul>
       </div>
     </div>
   </section>
