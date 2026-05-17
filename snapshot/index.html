@@ -8,30 +8,34 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>JB</text></svg>" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --sand: #E8DED1;
-      --sand-light: #F0E9DF;
-      --sand-dark: #D9CCBB;
-      --charcoal: #2C2C2C;
-      --slate: #4A4A4A;
-      --slate-light: #6E6E6E;
-      --accent: #6B7B8D;
-      --accent-light: #8A97A5;
-      --rule: rgba(44,44,44,0.10);
-      --font-serif: 'DM Serif Display', Georgia, serif;
-      --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+      --paper: #E5DED1;
+      --paper-deep: #D8CFBD;
+      --paper-light: #EBE5DA;
+      --ink: #1F262F;
+      --ink-70: rgba(31,38,47,0.74);
+      --ink-50: rgba(31,38,47,0.52);
+      --ink-30: rgba(31,38,47,0.32);
+      --rule: rgba(31,38,47,0.14);
+      --rule-strong: rgba(31,38,47,0.22);
+      --blue: #5B6F82;
+      --blue-deep: #3F5468;
+      --blue-light: #8AA0B5;
+      --serif: 'Instrument Serif', Georgia, serif;
+      --sans: 'Geist', system-ui, -apple-system, sans-serif;
+      --mono: 'Geist Mono', ui-monospace, monospace;
     }
 
     html { scroll-behavior: smooth; }
 
     body {
-      background: var(--sand);
-      color: var(--charcoal);
-      font-family: var(--font-sans);
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
       font-size: 16px;
       line-height: 1.7;
       -webkit-font-smoothing: antialiased;
@@ -51,9 +55,9 @@
     }
 
     h1, h2, h3 {
-      font-family: var(--font-serif);
+      font-family: var(--serif);
       font-weight: 400;
-      color: var(--charcoal);
+      color: var(--ink);
     }
 
     h1 {
@@ -64,7 +68,7 @@
     }
 
     p {
-      color: var(--slate);
+      color: var(--ink-70);
       margin-bottom: 1.25rem;
     }
 
@@ -81,25 +85,25 @@
     }
 
     .section-label {
-      font-family: var(--font-sans);
+      font-family: var(--sans);
       font-weight: 600;
       font-size: 0.875rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--accent);
+      color: var(--blue);
       margin-bottom: 2rem;
     }
 
     .lead {
       font-size: 1.0625rem;
       line-height: 1.65;
-      color: var(--slate);
+      color: var(--ink-70);
       margin-bottom: 1rem;
     }
 
     .form-note {
       font-size: 0.875rem;
-      color: var(--slate-light);
+      color: var(--ink-50);
       font-style: italic;
       margin-top: 2rem;
     }
@@ -109,7 +113,7 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      background: var(--sand);
+      background: var(--paper);
       border-bottom: 1px solid var(--rule);
     }
 
@@ -121,9 +125,9 @@
     }
 
     .nav-logo {
-      font-family: var(--font-serif);
+      font-family: var(--serif);
       font-size: 1.125rem;
-      color: var(--charcoal);
+      color: var(--ink);
       text-decoration: none;
       flex-shrink: 0;
     }
@@ -139,24 +143,24 @@
 
     .nav-links a {
       font-size: 0.9375rem;
-      color: var(--slate);
+      color: var(--ink-70);
       text-decoration: none;
       transition: color 0.15s;
     }
 
-    .nav-links a:hover { color: var(--charcoal); }
+    .nav-links a:hover { color: var(--ink); }
 
     .nav-cta {
       font-weight: 600;
       font-size: 0.875rem;
-      color: var(--sand-light) !important;
-      background: var(--charcoal);
+      color: var(--paper-light) !important;
+      background: var(--ink);
       padding: 0.5rem 1.25rem;
       border-radius: 4px;
       transition: background 0.15s;
     }
 
-    .nav-cta:hover { background: var(--accent) !important; }
+    .nav-cta:hover { background: var(--blue) !important; }
 
     .nav-toggle {
       display: none;
@@ -172,7 +176,7 @@
       display: block;
       width: 24px;
       height: 2px;
-      background: var(--charcoal);
+      background: var(--ink);
       border-radius: 2px;
     }
 
@@ -196,17 +200,17 @@
       font-size: 0.75rem;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--slate-light);
+      color: var(--ink-50);
     }
 
     .footer-links a {
       font-size: 0.75rem;
-      color: var(--slate-light);
+      color: var(--ink-50);
       text-decoration: none;
       transition: color 0.15s;
     }
 
-    .footer-links a:hover { color: var(--charcoal); }
+    .footer-links a:hover { color: var(--ink); }
 
     /* ── Responsive ── */
     @media (max-width: 700px) {
@@ -218,7 +222,7 @@
         top: 64px;
         left: 0;
         right: 0;
-        background: var(--sand);
+        background: var(--paper);
         border-bottom: 1px solid var(--rule);
         flex-direction: column;
         align-items: stretch;
