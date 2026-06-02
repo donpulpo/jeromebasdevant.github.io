@@ -3,15 +3,58 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Jérôme Basdevant — AI Leadership Advisory</title>
+  <title>Jérôme Basdevant — Fractional CAIO &amp; AI Leadership Advisor | Europe</title>
   <meta name="description" content="I help leadership teams figure out what AI actually changes about their business and then make the shift real." />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>JB</text></svg>" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://jeromebasdevant.com/" />
+
+  <!-- Open Graph / LinkedIn -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://jeromebasdevant.com/" />
+  <meta property="og:title" content="Jérôme Basdevant — Fractional CAIO &amp; AI Leadership Advisor | Europe" />
+  <meta property="og:description" content="I help leadership teams figure out what AI actually changes about their business and then make the shift real." />
+  <meta property="og:image" content="https://jeromebasdevant.com/assets/jerome-basdevant_lg_2000px_01a.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Jérôme Basdevant — Fractional CAIO &amp; AI Leadership Advisor | Europe" />
+  <meta name="twitter:description" content="I help leadership teams figure out what AI actually changes about their business and then make the shift real." />
+  <meta name="twitter:image" content="https://jeromebasdevant.com/assets/jerome-basdevant_lg_2000px_01a.jpg" />
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Jérôme Basdevant",
+    "url": "https://jeromebasdevant.com",
+    "email": "me@jerome.basdevant.com",
+    "jobTitle": "Fractional Chief AI Officer",
+    "description": "AI leadership advisor helping leadership teams navigate AI strategy, governance, and organisational change.",
+    "knowsLanguage": ["en", "fr", "es"],
+    "sameAs": ["https://www.linkedin.com/in/jeromebasdevant/"],
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "ES"
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "AI Leadership Advisory Engagements",
+      "itemListElement": [
+        { "@type": "Offer", "name": "AI Readiness Diagnostic" },
+        { "@type": "Offer", "name": "AI Strategy & Hard Choices" },
+        { "@type": "Offer", "name": "Fractional Chief AI Officer (CAIO)" }
+      ]
+    }
+  }
+  </script>
+
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
 
     :root {
       --paper: #E5DED1;
@@ -186,12 +229,18 @@
     .hero-photo {
       align-self: stretch;
       background: var(--paper-deep);
-      background-image: url(assets/jerome-basdevant_lg_2000px_01a.jpg);
-      background-size: cover;
-      background-position: 62% 18%;
       min-height: 440px;
       border-radius: 2px;
       position: relative;
+      overflow: hidden;
+    }
+    .hero-photo img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 62% 18%;
     }
     .hero-photo-tag {
       position: absolute; bottom: 16px; left: 16px;
@@ -680,8 +729,8 @@
         <p class="hero-sub">I help leadership teams figure out what AI actually changes about their business and then make the shift real.</p>
         <p class="hero-context">25 years building, scaling, and reinventing technology products across four countries.</p>
       </div>
-      <div class="hero-photo" role="img" aria-label="Jérôme Basdevant — professional headshot, blue-grey blazer">
-
+      <div class="hero-photo">
+        <img src="assets/jerome-basdevant_lg_2000px_01a.jpg" alt="Jérôme Basdevant, AI Leadership Advisor and Fractional CAIO, based in Spain" width="600" height="440" loading="eager" />
       </div>
     </div>
   </header>
@@ -749,10 +798,11 @@
   </section>
 
   <!-- ═══════════ WHAT CHANGES ═══════════ -->
-  <section>
+  <section id="what-changes">
     <div class="wrap">
       <div class="section-head">
         <span class="label">What Changes When I Show Up</span>
+        <h2 class="visually-hidden">What changes when I show up</h2>
       </div>
 
       <div class="outcomes">
@@ -913,7 +963,7 @@
       <span class="footer-name">Jérôme Basdevant · MMXXVI</span>
       <nav class="footer-links">
         <a href="https://www.linkedin.com/in/jeromebasdevant/" target="_blank" rel="noopener">LinkedIn</a>
-          <a href="mailto:jerome@jeromebasdevant.com">Email</a>
+          <a href="mailto:me@jerome.basdevant.com">Email</a>
       </nav>
     </div>
   </footer>
